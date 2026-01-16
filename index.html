@@ -18,8 +18,8 @@
 
 /* ================= BODY ================= */
 body {
-  background: #efe6d8; /* beige cálido */
-  color: #3b3b3b;
+  background: #f4efe6; /* crema */
+  color: #4a443c;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -30,20 +30,21 @@ section {
   justify-content: center;
 }
 
+/* ================= TARJETAS ================= */
 .card {
-  background: rgba(255,255,255,0.92);
+  background: #fffdf9;
   max-width: 420px;
   width: 100%;
-  padding: 40px 26px;
-  border-radius: 18px;
+  padding: 42px 28px;
+  border-radius: 20px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
 }
 
 /* ================= TEXTOS ================= */
 h1, h2, h3 {
   font-family: 'Playfair Display', serif;
-  color: #2f2f2f;
+  color: #3d382f;
 }
 
 h1 {
@@ -63,7 +64,7 @@ h3 {
 
 p {
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.65;
   margin-bottom: 14px;
 }
 
@@ -72,32 +73,42 @@ input {
   width: 100%;
   padding: 14px;
   border-radius: 30px;
-  border: 1px solid #ccc;
+  border: 1px solid #d3cfc7;
   text-align: center;
   font-size: 1rem;
+  background: #fff;
 }
 
 /* ================= BOTONES ================= */
 .btn {
-  margin-top: 16px;
-  padding: 14px 28px;
+  margin-top: 18px;
+  padding: 14px 30px;
   border-radius: 30px;
   border: none;
-  background: #7a8f5a;
-  color: #fff;
+  background: #d8cbb8; /* beige */
+  color: #4a443c;
   font-size: 1rem;
   cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #cdbfa9;
 }
 
 .btn.secondary {
-  background: #b7b7b7;
+  background: #e6dfd3;
+}
+
+.btn.secondary:hover {
+  background: #d8d0c3;
 }
 
 /* ================= MAPA ================= */
 iframe {
   width: 100%;
   height: 220px;
-  border-radius: 14px;
+  border-radius: 16px;
   border: none;
   margin-top: 14px;
 }
@@ -111,15 +122,16 @@ iframe {
 }
 
 .tiempo {
-  background: #f6f2ea;
-  padding: 14px;
-  border-radius: 14px;
-  min-width: 70px;
+  background: #f7f1e8;
+  padding: 16px;
+  border-radius: 16px;
+  min-width: 72px;
 }
 
 .numero {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   font-weight: 600;
+  color: #3d382f;
 }
 
 .label {
@@ -195,7 +207,7 @@ iframe {
 
 <script>
 /* ================= CONFIG ================= */
-const WHATSAPP_NUMERO = "5491112345678"; // <-- CAMBIAR ESTE NÚMERO
+const WHATSAPP_NUMERO = "5491112345678"; // CAMBIAR POR EL REAL
 
 const invitados = {
   "Ana": "Querida Ana, queremos invitarte a compartir este día tan especial para nosotros.",
