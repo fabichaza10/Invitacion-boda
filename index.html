@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fabian & Maira</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
 <style>
 /* ================= RESET ================= */
@@ -17,11 +17,10 @@
 
 /* ================= BODY ================= */
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   color: #4a443c;
   min-height: 100vh;
 
-  /* Fondo papel */
   background:
     repeating-linear-gradient(
       0deg,
@@ -39,19 +38,18 @@ body {
   width: 80px;
   height: 80px;
   pointer-events: none;
-  opacity: 0.7;
+  opacity: 0.65;
 }
 
 .corner svg {
   width: 100%;
   height: 100%;
   fill: none;
-  stroke: #c9b26a; /* dorado */
+  stroke: #c9b26a;
   stroke-width: 2;
 }
 
-/* Posiciones */
-.top-left { top: 8px; left: 8px; transform: rotate(0deg); }
+.top-left { top: 8px; left: 8px; }
 .top-right { top: 8px; right: 8px; transform: rotate(90deg); }
 .bottom-right { bottom: 8px; right: 8px; transform: rotate(180deg); }
 .bottom-left { bottom: 8px; left: 8px; transform: rotate(270deg); }
@@ -60,30 +58,35 @@ body {
 .wrapper {
   max-width: 420px;
   margin: auto;
-  padding: 32px 18px;
-  position: relative;
-  z-index: 1;
+  padding: 44px 22px;
   text-align: center;
+}
+
+/* ================= ESPACIADO DE SECCIONES ================= */
+.section {
+  margin: 48px 0;
 }
 
 /* ================= TEXTOS ================= */
 h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.4rem;
-  margin-bottom: 8px;
+  font-size: 2.6rem;
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 14px;
   color: #3d382f;
 }
 
 h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  margin: 22px 0 4px;
+  font-size: 1.6rem;
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 10px;
   color: #3d382f;
 }
 
 p {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.7;
   margin-bottom: 8px;
 }
 
@@ -95,21 +98,23 @@ input {
   border: 1px solid #cfc9bd;
   font-size: 1rem;
   text-align: center;
-  margin-top: 12px;
+  margin-top: 14px;
   background: rgba(255,255,255,0.9);
+  font-family: inherit;
 }
 
 /* ================= BOTONES ================= */
 button {
   width: 100%;
-  margin-top: 14px;
+  margin-top: 16px;
   padding: 14px;
   border-radius: 28px;
   border: none;
   background: #EDE8D0;
   color: #4a443c;
-  font-size: 1rem;
+  font-size: 1.05rem;
   cursor: pointer;
+  font-family: inherit;
 }
 
 button.secondary {
@@ -122,7 +127,7 @@ iframe {
   height: 190px;
   border-radius: 14px;
   border: none;
-  margin: 10px 0;
+  margin-top: 14px;
   filter: grayscale(15%) contrast(95%);
 }
 
@@ -130,7 +135,7 @@ iframe {
 #reloj {
   display: flex;
   justify-content: space-between;
-  margin-top: 24px;
+  margin: 18px 0;
 }
 
 .tiempo {
@@ -138,45 +143,29 @@ iframe {
 }
 
 .numero {
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   font-weight: 600;
 }
 
 .label {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   opacity: 0.65;
   letter-spacing: 1px;
 }
 
 /* ================= OCULTOS ================= */
 #invitacion { display: none; }
-.error { color: #8b2e2e; margin-top: 10px; }
+.error { color: #8b2e2e; margin-top: 12px; }
 </style>
 </head>
 
 <body>
 
 <!-- ORNAMENTOS -->
-<div class="corner top-left">
-  <svg viewBox="0 0 100 100">
-    <path d="M10 60 C40 20, 60 20, 90 10" />
-  </svg>
-</div>
-<div class="corner top-right">
-  <svg viewBox="0 0 100 100">
-    <path d="M10 60 C40 20, 60 20, 90 10" />
-  </svg>
-</div>
-<div class="corner bottom-right">
-  <svg viewBox="0 0 100 100">
-    <path d="M10 60 C40 20, 60 20, 90 10" />
-  </svg>
-</div>
-<div class="corner bottom-left">
-  <svg viewBox="0 0 100 100">
-    <path d="M10 60 C40 20, 60 20, 90 10" />
-  </svg>
-</div>
+<div class="corner top-left"><svg viewBox="0 0 100 100"><path d="M10 60 C40 20, 60 20, 90 10"/></svg></div>
+<div class="corner top-right"><svg viewBox="0 0 100 100"><path d="M10 60 C40 20, 60 20, 90 10"/></svg></div>
+<div class="corner bottom-right"><svg viewBox="0 0 100 100"><path d="M10 60 C40 20, 60 20, 90 10"/></svg></div>
+<div class="corner bottom-left"><svg viewBox="0 0 100 100"><path d="M10 60 C40 20, 60 20, 90 10"/></svg></div>
 
 <!-- ACCESO -->
 <div class="wrapper" id="acceso">
@@ -190,32 +179,40 @@ iframe {
 <!-- INVITACIÓN -->
 <div class="wrapper" id="invitacion">
 
-  <h1>Fabian & Maira</h1>
-  <p id="mensajePersonal"></p>
+  <div class="section">
+    <h1>Fabian & Maira</h1>
+    <p id="mensajePersonal"></p>
+    <p>Con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.</p>
+  </div>
 
-  <p>
-    Con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.
-  </p>
+  <div class="section">
+    <h2>Civil</h2>
+    <p>06 de marzo de 2026 · 9:55</p>
+    <p>Delegación Registro Provincial de las Personas – Caseros</p>
+    <iframe src="https://www.google.com/maps?q=Registro%20Provincial%20de%20las%20Personas%20Caseros&output=embed"></iframe>
+  </div>
 
-  <h2>Civil</h2>
-  <p>06 de marzo de 2026 · 9:55</p>
-  <p>Delegación Registro Provincial de las Personas – Caseros</p>
-  <iframe src="https://www.google.com/maps?q=Registro%20Provincial%20de%20las%20Personas%20Caseros&output=embed"></iframe>
+  <!-- RELOJ ENTRE EVENTOS -->
+  <div class="section">
+    <div id="reloj">
+      <div class="tiempo"><div class="numero" id="d"></div><div class="label">DIAS</div></div>
+      <div class="tiempo"><div class="numero" id="h"></div><div class="label">HS</div></div>
+      <div class="tiempo"><div class="numero" id="m"></div><div class="label">MIN</div></div>
+      <div class="tiempo"><div class="numero" id="s"></div><div class="label">SEG</div></div>
+    </div>
+  </div>
 
-  <h2>Celebración</h2>
-  <p>06 de marzo de 2026 · 21:30</p>
-  <p>Quinta La Mabel</p>
-  <iframe src="https://www.google.com/maps?q=Quinta%20La%20Mabel&output=embed"></iframe>
+  <div class="section">
+    <h2>Celebración</h2>
+    <p>06 de marzo de 2026 · 21:30</p>
+    <p>Quinta La Mabel</p>
+    <iframe src="https://www.google.com/maps?q=Quinta%20La%20Mabel&output=embed"></iframe>
+  </div>
 
-  <p>Confirmación de asistencia</p>
-  <button onclick="confirmar(true)">Confirmo asistencia</button>
-  <button class="secondary" onclick="confirmar(false)">No podré asistir</button>
-
-  <div id="reloj">
-    <div class="tiempo"><div class="numero" id="d"></div><div class="label">DIAS</div></div>
-    <div class="tiempo"><div class="numero" id="h"></div><div class="label">HS</div></div>
-    <div class="tiempo"><div class="numero" id="m"></div><div class="label">MIN</div></div>
-    <div class="tiempo"><div class="numero" id="s"></div><div class="label">SEG</div></div>
+  <div class="section">
+    <p>Confirmación de asistencia</p>
+    <button onclick="confirmar(true)">Confirmo asistencia</button>
+    <button class="secondary" onclick="confirmar(false)">No podré asistir</button>
   </div>
 
 </div>
@@ -248,10 +245,7 @@ function confirmar(asiste) {
     ? `Hola, soy ${nombreActual}. Confirmo mi asistencia al casamiento de Fabian y Maira.`
     : `Hola, soy ${nombreActual}. Lamentablemente no podré asistir al casamiento de Fabian y Maira.`;
 
-  window.open(
-    `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`,
-    "_blank"
-  );
+  window.open(`https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`, "_blank");
 }
 
 const fecha = new Date("2026-03-06T00:00:00");
