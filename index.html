@@ -19,8 +19,10 @@
 body {
   font-family: 'Montserrat', sans-serif;
   color: #4a443c;
+  min-height: 100vh;
+
+  /* Fondo papel */
   background:
-    /* textura papel */
     repeating-linear-gradient(
       0deg,
       rgba(0,0,0,0.015),
@@ -28,37 +30,40 @@ body {
       transparent 1px,
       transparent 3px
     ),
-    linear-gradient(90deg, #f1ebdc, #f6f1e6, #f1ebdc);
-  min-height: 100vh;
+    #f4efe6;
 }
 
-/* ================= DECORACION LATERAL ================= */
-body::before,
-body::after {
-  content: "";
+/* ================= ORNAMENTOS ================= */
+.corner {
   position: fixed;
-  top: 0;
-  width: 22px;
-  height: 100%;
+  width: 80px;
+  height: 80px;
   pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.08),
-    rgba(0,0,0,0.02),
-    rgba(0,0,0,0.08)
-  );
+  opacity: 0.7;
 }
 
-body::before { left: 0; }
-body::after { right: 0; }
+.corner svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #c9b26a; /* dorado */
+  stroke-width: 2;
+}
+
+/* Posiciones */
+.top-left { top: 8px; left: 8px; transform: rotate(0deg); }
+.top-right { top: 8px; right: 8px; transform: rotate(90deg); }
+.bottom-right { bottom: 8px; right: 8px; transform: rotate(180deg); }
+.bottom-left { bottom: 8px; left: 8px; transform: rotate(270deg); }
 
 /* ================= CONTENEDOR ================= */
 .wrapper {
   max-width: 420px;
   margin: auto;
-  padding: 30px 18px;
+  padding: 32px 18px;
   position: relative;
   z-index: 1;
+  text-align: center;
 }
 
 /* ================= TEXTOS ================= */
@@ -72,7 +77,7 @@ h1 {
 h2 {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
-  margin: 24px 0 4px;
+  margin: 22px 0 4px;
   color: #3d382f;
 }
 
@@ -150,6 +155,28 @@ iframe {
 </head>
 
 <body>
+
+<!-- ORNAMENTOS -->
+<div class="corner top-left">
+  <svg viewBox="0 0 100 100">
+    <path d="M10 60 C40 20, 60 20, 90 10" />
+  </svg>
+</div>
+<div class="corner top-right">
+  <svg viewBox="0 0 100 100">
+    <path d="M10 60 C40 20, 60 20, 90 10" />
+  </svg>
+</div>
+<div class="corner bottom-right">
+  <svg viewBox="0 0 100 100">
+    <path d="M10 60 C40 20, 60 20, 90 10" />
+  </svg>
+</div>
+<div class="corner bottom-left">
+  <svg viewBox="0 0 100 100">
+    <path d="M10 60 C40 20, 60 20, 90 10" />
+  </svg>
+</div>
 
 <!-- ACCESO -->
 <div class="wrapper" id="acceso">
