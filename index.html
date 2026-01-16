@@ -201,7 +201,6 @@ iframe {
 
   <div class="divider"></div>
 
-  <!-- CANCIONES -->
   <div class="section">
     <h2>¿Qué canciones no pueden faltar?</h2>
     <p>Queremos armar una noche inolvidable y tu música es parte de eso.</p>
@@ -210,7 +209,7 @@ iframe {
 
   <div class="divider"></div>
 
-  <div class="section">
+  <div class="section" id="confirmacion">
     <p>Confirmación de asistencia</p>
     <button onclick="confirmar(true)">Confirmo asistencia</button>
     <button class="secondary" onclick="confirmar(false)">No podré asistir</button>
@@ -219,7 +218,9 @@ iframe {
 </div>
 
 <script>
-const WHATSAPP_NUMERO = "5491112345678";
+/* ================= CONFIGURACIÓN ================= */
+
+const API_URL = "https://script.google.com/macros/s/AKfycby7ctV3h5L4SgwQ1T9y_TM-6RMzLPt_kMAhs0KMDbOlF0KwUR-YK-2vGd10VZiaON0yLQ/exec";
 
 const invitados = {
   "Ana": "Ana, nos encantaría que seas parte de este momento tan importante.",
@@ -229,33 +230,57 @@ const invitados = {
 
 let nombreActual = "";
 
+/* ================= ACCESO ================= */
+
 function entrar() {
   const nombre = nombreInput.value.trim();
+
   if (!invitados[nombre]) {
     error.innerText = "Nombre no encontrado";
     return;
   }
+
   nombreActual = nombre;
   mensajePersonal.innerText = invitados[nombre];
+
   acceso.style.display = "none";
   invitacion.style.display = "block";
 }
 
-function confirmar(asiste) {
-  const cancion = document.getElementById("cancion").value;
-  const texto = asiste
-    ? `Hola, soy ${nombreActual}. Confirmo mi asistencia al casamiento de Fabian y Maira.${cancion ? " Canción sugerida: " + cancion : ""}`
-    : `Hola, soy ${nombreActual}. Lamentablemente no podré asistir al casamiento de Fabian y Maira.`;
+/* ================= ENVÍO A GOOGLE SHEETS ================= */
 
-  window.open(
-    `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`,
-    "_blank"
-  );
+function confirmar(asiste) {
+
+  const cancion = document.getElementById("cancion").value;
+
+  const data = {
+    nombre: nombreActual,
+    asistencia: asiste ? "Sí" : "No",
+    cancion: cancion || ""
+  };
+
+  fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(() => {
+    document.getElementById("confirmacion").innerHTML =
+      "<p>Gracias por tu respuesta. Nos llena de alegría saber de vos.</p>";
+  })
+  .catch(() => {
+    alert("Hubo un error al enviar la confirmación. Intentá nuevamente.");
+  });
 }
 
+/* ================= CONTADOR ================= */
+
 const fecha = new Date("2026-03-06T00:00:00");
+
 setInterval(() => {
   const diff = fecha - new Date();
+
   d.innerText = Math.max(0, Math.floor(diff / (1000*60*60*24)));
   h.innerText = Math.max(0, Math.floor((diff / (1000*60*60)) % 24));
   m.innerText = Math.max(0, Math.floor((diff / (1000*60)) % 60));
@@ -265,4 +290,3 @@ setInterval(() => {
 
 </body>
 </html>
-
