@@ -5,264 +5,212 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fabian & Maira</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<!-- Fuente elegante cursiva -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-/* ================= RESET ================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* ==================== ESTILOS GENERALES ==================== */
 
-/* ================= BODY ================= */
 body {
-  font-family: 'Cormorant Garamond', serif;
-  color: #4a443c;
-  min-height: 100vh;
-  background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(0,0,0,0.015),
-      rgba(0,0,0,0.015) 1px,
-      transparent 1px,
-      transparent 3px
-    ),
-    #f4efe6;
+  margin: 0;
+  background: #f5f1e8; /* color crema */
+  color: #3a3a3a;
+  font-family: 'Playfair Display', serif;
 }
 
-/* ================= CONTENEDOR ================= */
-.wrapper {
+/* Contenedor principal */
+.container {
   max-width: 420px;
   margin: auto;
-  padding: 46px 22px;
-  text-align: center;
+  padding: 30px 20px;
 }
 
-/* ================= SECCIONES ================= */
-.section {
-  margin: 44px 0;
+/* Fade-in suave */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1.2s ease forwards;
 }
 
-/* ================= DIVISOR ================= */
-.divider {
-  width: 60%;
-  height: 1px;
-  margin: 36px auto;
-  background: linear-gradient(to right, transparent, #cfc9bd, transparent);
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* ================= TEXTOS ================= */
+/* ==================== TEXTOS ==================== */
+
 h1 {
-  font-size: 2.6rem;
-  font-style: italic;
-  font-weight: 600;
-  margin-bottom: 14px;
-  color: #3d382f;
-}
-
-h2 {
-  font-size: 1.55rem;
-  font-style: italic;
-  font-weight: 500;
-  margin-bottom: 12px;
-  color: #3d382f;
-}
-
-p {
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-family: 'Great Vibes', cursive;
+  font-size: 52px;
+  text-align: center;
   margin-bottom: 10px;
 }
 
-/* ================= INPUT ================= */
-input {
-  width: 100%;
-  padding: 14px;
-  border-radius: 28px;
-  border: 1px solid #cfc9bd;
-  font-size: 1rem;
+h2 {
+  font-size: 20px;
   text-align: center;
-  margin-top: 14px;
-  background: rgba(255,255,255,0.9);
-  font-family: inherit;
+  margin-bottom: 10px;
 }
 
-/* ================= BOTONES ================= */
+p {
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Separador fino */
+.divider {
+  height: 1px;
+  background: #d8d2bd;
+  margin: 30px 0;
+}
+
+/* ==================== FORMULARIO ==================== */
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d8d2bd;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 14px;
+}
+
 button {
   width: 100%;
-  margin-top: 16px;
-  padding: 14px;
-  border-radius: 28px;
+  margin-top: 20px;
+  padding: 12px;
+  background: #EDE8D0; /* beige solicitado */
   border: none;
-  background: #EDE8D0;
-  color: #4a443c;
-  font-size: 1.05rem;
+  border-radius: 4px;
+  font-size: 15px;
   cursor: pointer;
-  font-family: inherit;
 }
 
-button.secondary {
-  background: #e3dec6;
+button:hover {
+  background: #e4dec3;
 }
 
-/* ================= MAPAS ================= */
-iframe {
-  width: 100%;
-  height: 190px;
-  border-radius: 14px;
-  border: none;
-  margin-top: 14px;
-  filter: grayscale(15%) contrast(95%);
+#mensaje {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
 }
-
-/* ================= CONTADOR ================= */
-.countdown-box {
-  border: 1px solid #d6cfbf;
-  border-radius: 22px;
-  padding: 22px 16px;
-  background: rgba(255,255,255,0.35);
-}
-
-#reloj {
-  display: flex;
-  justify-content: space-between;
-}
-
-.tiempo {
-  flex: 1;
-}
-
-.numero {
-  font-size: 2.4rem;
-  font-weight: 600;
-}
-
-.label {
-  font-size: 0.7rem;
-  opacity: 0.65;
-  letter-spacing: 1px;
-}
-
-/* ================= OCULTOS ================= */
-#invitacion { display: none; }
-.error { color: #8b2e2e; margin-top: 12px; }
 </style>
 </head>
 
 <body>
 
-<!-- ACCESO -->
-<div class="wrapper" id="acceso">
-  <h1>Invitación</h1>
-  <p>Ingresá tu nombre para continuar</p>
-  <input id="nombreInput" placeholder="Tu nombre">
-  <button onclick="entrar()">Ingresar</button>
-  <p class="error" id="error"></p>
-</div>
+<div class="container fade">
 
-<!-- INVITACIÓN -->
-<div class="wrapper" id="invitacion">
+  <!-- TÍTULO -->
+  <h1>Fabian & Maira</h1>
 
-  <div class="section">
-    <h1>Fabian & Maira</h1>
-    <p id="mensajePersonal"></p>
-    <p>
-      Con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.
-    </p>
-  </div>
+  <p>
+    Nos casamos y sería un honor compartir este día tan especial con vos.
+  </p>
 
   <div class="divider"></div>
 
-  <div class="section">
-    <h2>Civil</h2>
-    <p>06 de marzo de 2026 · 9:55</p>
-    <p>Delegación Registro Provincial de las Personas – Caseros</p>
-    <iframe src="https://www.google.com/maps?q=Registro%20Provincial%20de%20las%20Personas%20Caseros&output=embed"></iframe>
-  </div>
+  <!-- FECHAS -->
+  <h2>06 de marzo de 2026</h2>
 
-  <div class="section">
-    <div class="countdown-box">
-      <div id="reloj">
-        <div class="tiempo"><div class="numero" id="d"></div><div class="label">DIAS</div></div>
-        <div class="tiempo"><div class="numero" id="h"></div><div class="label">HS</div></div>
-        <div class="tiempo"><div class="numero" id="m"></div><div class="label">MIN</div></div>
-        <div class="tiempo"><div class="numero" id="s"></div><div class="label">SEG</div></div>
-      </div>
-    </div>
-  </div>
+  <p>
+    Civil: Delegación Registro Provincial de las Personas – Caseros<br>
+    9:55 hs
+  </p>
 
-  <div class="section">
-    <h2>Celebración</h2>
-    <p>06 de marzo de 2026 · 21:30</p>
-    <p>Quinta La Mabel</p>
-    <iframe src="https://www.google.com/maps?q=Quinta%20La%20Mabel&output=embed"></iframe>
-  </div>
+  <p>
+    Celebración: Quinta La Mabel<br>
+    21:30 hs
+  </p>
 
   <div class="divider"></div>
 
-  <!-- CANCIONES -->
-  <div class="section">
-    <h2>¿Qué canciones no pueden faltar?</h2>
-    <p>Queremos armar una noche inolvidable y tu música es parte de eso.</p>
-    <input id="cancion" placeholder="Escribí una canción o artista">
-  </div>
+  <!-- CONFIRMACIÓN -->
+  <h2 id="saludo"></h2>
 
-  <div class="divider"></div>
+  <p>
+    Por favor confirmá tu asistencia y ayudanos a elegir la música de la noche.
+  </p>
 
-  <div class="section">
-    <p>Confirmación de asistencia</p>
-    <button onclick="confirmar(true)">Confirmo asistencia</button>
-    <button class="secondary" onclick="confirmar(false)">No podré asistir</button>
-  </div>
+  <label>¿Asistís al casamiento?</label>
+  <select id="asistencia">
+    <option value="Sí">Sí, confirmo asistencia</option>
+    <option value="No">No podré asistir</option>
+  </select>
+
+  <label>¿Qué canción no puede faltar?</label>
+  <input
+    id="cancion"
+    type="text"
+    placeholder="Ej: All of Me – John Legend"
+  >
+
+  <button onclick="enviarConfirmacion()">Enviar respuesta</button>
+
+  <p id="mensaje"></p>
 
 </div>
 
 <script>
-const WHATSAPP_NUMERO = "5491156175471";
+/* ==================== CONFIGURACIÓN ==================== */
 
-const invitados = {
-  "Ana": "Ana, nos encantaría que seas parte de este momento tan importante.",
-  "Juan": "Juan, será una alegría compartir nuestro casamiento con vos.",
-  "María": "María, esperamos que puedas acompañarnos en este día tan especial."
-};
+/*
+IMPORTANTE:
+Reemplazá esta URL por la que te dio Apps Script
+(la implementación del Google Sheet "invitados")
+*/
+const API_URL = "https://script.google.com/macros/s/AKfycby7ctV3h5L4SgwQ1T9y_TM-6RMzLPt_kMAhs0KMDbOlF0KwUR-YK-2vGd10VZiaON0yLQ/exec;
 
-let nombreActual = "";
+/*
+Nombre del invitado:
+Se puede pasar por URL ?nombre=Juan
+Ejemplo:
+https://tupagina.github.io/?nombre=Juan
+*/
+const params = new URLSearchParams(window.location.search);
+const nombreActual = params.get("nombre") || "Querido invitado";
 
-function entrar() {
-  const nombre = nombreInput.value.trim();
-  if (!invitados[nombre]) {
-    error.innerText = "Nombre no encontrado";
-    return;
-  }
-  nombreActual = nombre;
-  mensajePersonal.innerText = invitados[nombre];
-  acceso.style.display = "none";
-  invitacion.style.display = "block";
+/* Mostrar saludo personalizado */
+document.getElementById("saludo").innerText =
+  "Hola " + nombreActual;
+
+/* ==================== ENVÍO INVISIBLE ==================== */
+
+function enviarConfirmacion() {
+
+  const data = {
+    nombre: nombreActual,
+    asistencia: document.getElementById("asistencia").value,
+    cancion: document.getElementById("cancion").value
+  };
+
+  fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(() => {
+    document.getElementById("mensaje").innerText =
+      "Gracias por responder. ¡Te esperamos!";
+  })
+  .catch(() => {
+    document.getElementById("mensaje").innerText =
+      "Ocurrió un error. Intentá nuevamente.";
+  });
 }
-
-function confirmar(asiste) {
-  const cancion = document.getElementById("cancion").value;
-  const texto = asiste
-    ? `Hola, soy ${nombreActual}. Confirmo mi asistencia al casamiento de Fabian y Maira.${cancion ? " Canción sugerida: " + cancion : ""}`
-    : `Hola, soy ${nombreActual}. Lamentablemente no podré asistir al casamiento de Fabian y Maira.`;
-
-  window.open(
-    `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`,
-    "_blank"
-  );
-}
-
-const fecha = new Date("2026-03-06T00:00:00");
-setInterval(() => {
-  const diff = fecha - new Date();
-  d.innerText = Math.max(0, Math.floor(diff / (1000*60*60*24)));
-  h.innerText = Math.max(0, Math.floor((diff / (1000*60*60)) % 24));
-  m.innerText = Math.max(0, Math.floor((diff / (1000*60)) % 60));
-  s.innerText = Math.max(0, Math.floor((diff / 1000) % 60));
-}, 1000);
 </script>
 
 </body>
 </html>
-
