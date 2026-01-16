@@ -17,36 +17,69 @@
 
 /* ================= BODY ================= */
 body {
-  background: #f4efe6;
-  color: #4a443c;
   font-family: 'Montserrat', sans-serif;
-  text-align: center;
+  color: #4a443c;
+  background:
+    /* textura papel */
+    repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0.015),
+      rgba(0,0,0,0.015) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    linear-gradient(90deg, #f1ebdc, #f6f1e6, #f1ebdc);
+  min-height: 100vh;
 }
+
+/* ================= DECORACION LATERAL ================= */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 22px;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.08),
+    rgba(0,0,0,0.02),
+    rgba(0,0,0,0.08)
+  );
+}
+
+body::before { left: 0; }
+body::after { right: 0; }
 
 /* ================= CONTENEDOR ================= */
 .wrapper {
   max-width: 420px;
   margin: auto;
-  padding: 32px 18px;
+  padding: 30px 18px;
+  position: relative;
+  z-index: 1;
 }
 
 /* ================= TEXTOS ================= */
 h1 {
   font-family: 'Playfair Display', serif;
   font-size: 2.4rem;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  color: #3d382f;
 }
 
 h2 {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
-  margin: 26px 0 6px;
+  margin: 24px 0 4px;
+  color: #3d382f;
 }
 
 p {
   font-size: 0.95rem;
   line-height: 1.6;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 /* ================= INPUT ================= */
@@ -58,6 +91,7 @@ input {
   font-size: 1rem;
   text-align: center;
   margin-top: 12px;
+  background: rgba(255,255,255,0.9);
 }
 
 /* ================= BOTONES ================= */
@@ -80,17 +114,18 @@ button.secondary {
 /* ================= MAPAS ================= */
 iframe {
   width: 100%;
-  height: 200px;
+  height: 190px;
   border-radius: 14px;
   border: none;
-  margin: 12px 0;
+  margin: 10px 0;
+  filter: grayscale(15%) contrast(95%);
 }
 
 /* ================= RELOJ ================= */
 #reloj {
   display: flex;
   justify-content: space-between;
-  margin-top: 26px;
+  margin-top: 24px;
 }
 
 .tiempo {
@@ -98,13 +133,13 @@ iframe {
 }
 
 .numero {
-  font-size: 2.1rem;
+  font-size: 2.2rem;
   font-weight: 600;
 }
 
 .label {
   font-size: 0.65rem;
-  opacity: 0.7;
+  opacity: 0.65;
   letter-spacing: 1px;
 }
 
@@ -132,7 +167,7 @@ iframe {
   <p id="mensajePersonal"></p>
 
   <p>
-    Nos casamos y queremos compartir este día tan especial con vos.
+    Con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.
   </p>
 
   <h2>Civil</h2>
@@ -149,31 +184,17 @@ iframe {
   <button onclick="confirmar(true)">Confirmo asistencia</button>
   <button class="secondary" onclick="confirmar(false)">No podré asistir</button>
 
-  <!-- RELOJ -->
   <div id="reloj">
-    <div class="tiempo">
-      <div class="numero" id="d"></div>
-      <div class="label">DIAS</div>
-    </div>
-    <div class="tiempo">
-      <div class="numero" id="h"></div>
-      <div class="label">HS</div>
-    </div>
-    <div class="tiempo">
-      <div class="numero" id="m"></div>
-      <div class="label">MIN</div>
-    </div>
-    <div class="tiempo">
-      <div class="numero" id="s"></div>
-      <div class="label">SEG</div>
-    </div>
+    <div class="tiempo"><div class="numero" id="d"></div><div class="label">DIAS</div></div>
+    <div class="tiempo"><div class="numero" id="h"></div><div class="label">HS</div></div>
+    <div class="tiempo"><div class="numero" id="m"></div><div class="label">MIN</div></div>
+    <div class="tiempo"><div class="numero" id="s"></div><div class="label">SEG</div></div>
   </div>
 
 </div>
 
 <script>
-/* ================= CONFIG ================= */
-const WHATSAPP_NUMERO = "5491112345678"; // TU NUMERO
+const WHATSAPP_NUMERO = "5491112345678";
 
 const invitados = {
   "Ana": "Ana, nos encantaría que seas parte de este momento tan importante.",
@@ -183,7 +204,6 @@ const invitados = {
 
 let nombreActual = "";
 
-/* ================= ENTRADA ================= */
 function entrar() {
   const nombre = nombreInput.value.trim();
   if (!invitados[nombre]) {
@@ -196,7 +216,6 @@ function entrar() {
   invitacion.style.display = "block";
 }
 
-/* ================= CONFIRMAR ================= */
 function confirmar(asiste) {
   const texto = asiste
     ? `Hola, soy ${nombreActual}. Confirmo mi asistencia al casamiento de Fabian y Maira.`
@@ -208,9 +227,7 @@ function confirmar(asiste) {
   );
 }
 
-/* ================= RELOJ ================= */
 const fecha = new Date("2026-03-06T00:00:00");
-
 setInterval(() => {
   const diff = fecha - new Date();
   d.innerText = Math.max(0, Math.floor(diff / (1000*60*60*24)));
@@ -222,8 +239,6 @@ setInterval(() => {
 
 </body>
 </html>
-
-
 
 
 
