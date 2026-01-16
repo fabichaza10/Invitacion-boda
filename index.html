@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fabian & Maira</title>
 
-<title>Fabian y Maira</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 /* ================= RESET ================= */
@@ -18,126 +17,95 @@
 
 /* ================= BODY ================= */
 body {
-  background: #f4efe6; /* crema */
+  background: #f4efe6;
   color: #4a443c;
   font-family: 'Montserrat', sans-serif;
-}
-
-/* ================= SECCIONES ================= */
-section {
-  padding: 60px 16px;
-  display: flex;
-  justify-content: center;
-}
-
-/* ================= TARJETAS ================= */
-.card {
-  background: #fffdf9;
-  max-width: 420px;
-  width: 100%;
-  padding: 42px 28px;
-  border-radius: 20px;
   text-align: center;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+
+/* ================= CONTENEDOR ================= */
+.wrapper {
+  max-width: 420px;
+  margin: auto;
+  padding: 32px 18px;
 }
 
 /* ================= TEXTOS ================= */
-h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
-  color: #3d382f;
-}
-
 h1 {
+  font-family: 'Playfair Display', serif;
   font-size: 2.4rem;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 h2 {
-  font-size: 1.6rem;
-  margin-bottom: 12px;
-}
-
-h3 {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin: 26px 0 6px;
 }
 
 p {
-  font-size: 1rem;
-  line-height: 1.65;
-  margin-bottom: 14px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
 }
 
 /* ================= INPUT ================= */
 input {
   width: 100%;
   padding: 14px;
-  border-radius: 30px;
-  border: 1px solid #d3cfc7;
-  text-align: center;
+  border-radius: 28px;
+  border: 1px solid #cfc9bd;
   font-size: 1rem;
-  background: #fff;
+  text-align: center;
+  margin-top: 12px;
 }
 
 /* ================= BOTONES ================= */
-.btn {
-  margin-top: 18px;
-  padding: 14px 30px;
-  border-radius: 30px;
+button {
+  width: 100%;
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 28px;
   border: none;
-  background: ##EDE8D0; /* beige */
-  color: #EDE8D0;
+  background: #EDE8D0;
+  color: #4a443c;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
 
-.btn:hover {
-  background: #cdbfa9;
+button.secondary {
+  background: #e3dec6;
 }
 
-.btn.secondary {
-  background: #e6dfd3;
-}
-
-.btn.secondary:hover {
-  background: #d8d0c3;
-}
-
-/* ================= MAPA ================= */
+/* ================= MAPAS ================= */
 iframe {
   width: 100%;
-  height: 220px;
-  border-radius: 16px;
+  height: 200px;
+  border-radius: 14px;
   border: none;
-  margin-top: 14px;
+  margin: 12px 0;
 }
 
 /* ================= RELOJ ================= */
 #reloj {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+  justify-content: space-between;
+  margin-top: 26px;
 }
 
 .tiempo {
-  background: #f7f1e8;
-  padding: 16px;
-  border-radius: 16px;
-  min-width: 72px;
+  flex: 1;
 }
 
 .numero {
-  font-size: 1.9rem;
+  font-size: 2.1rem;
   font-weight: 600;
-  color: #3d382f;
 }
 
 .label {
-  font-size: 0.7rem;
-  letter-spacing: 1px;
+  font-size: 0.65rem;
   opacity: 0.7;
+  letter-spacing: 1px;
 }
 
 /* ================= OCULTOS ================= */
@@ -149,82 +117,79 @@ iframe {
 <body>
 
 <!-- ACCESO -->
-<section id="acceso">
-  <div class="card">
-    <h1>Invitación</h1>
-    <p>Por favor, ingresá tu nombre</p>
-    <input id="nombreInput" placeholder="Tu nombre">
-    <button class="btn" onclick="entrar()">Ingresar</button>
-    <p class="error" id="error"></p>
-  </div>
-</section>
+<div class="wrapper" id="acceso">
+  <h1>Invitación</h1>
+  <p>Ingresá tu nombre para continuar</p>
+  <input id="nombreInput" placeholder="Tu nombre">
+  <button onclick="entrar()">Ingresar</button>
+  <p class="error" id="error"></p>
+</div>
 
 <!-- INVITACIÓN -->
-<div id="invitacion">
+<div class="wrapper" id="invitacion">
 
-<section>
-  <div class="card">
-    <h1>Fabian y Maira</h1>
-    <p id="mensajePersonal"></p>
-    <p>Tenemos la alegría de invitarte a compartir nuestro casamiento.</p>
-  </div>
-</section>
+  <h1>Fabian & Maira</h1>
+  <p id="mensajePersonal"></p>
 
-<section>
-  <div class="card">
-    <h2>Casamiento civil</h2>
-    <p>06 de marzo de 2026 · 9:55</p>
-    <p>Delegación Registro Provincial de las Personas – Caseros</p>
-    <iframe src="https://www.google.com/maps?q=Registro%20Provincial%20de%20las%20Personas%20Caseros&output=embed"></iframe>
-  </div>
-</section>
+  <p>
+    Nos casamos y queremos compartir este día tan especial con vos.
+  </p>
 
-<section>
-  <div class="card">
-    <h2>Celebración</h2>
-    <p>06 de marzo de 2026 · 21:30</p>
-    <p>Quinta La Mabel</p>
-    <iframe src="https://www.google.com/maps?q=Quinta%20La%20Mabel&output=embed"></iframe>
+  <h2>Civil</h2>
+  <p>06 de marzo de 2026 · 9:55</p>
+  <p>Delegación Registro Provincial de las Personas – Caseros</p>
+  <iframe src="https://www.google.com/maps?q=Registro%20Provincial%20de%20las%20Personas%20Caseros&output=embed"></iframe>
 
-    <p style="margin-top:20px">Confirmación de asistencia</p>
-    <button class="btn" onclick="confirmar(true)">Asistiré</button><br>
-    <button class="btn secondary" onclick="confirmar(false)">No podré asistir</button>
-  </div>
-</section>
+  <h2>Celebración</h2>
+  <p>06 de marzo de 2026 · 21:30</p>
+  <p>Quinta La Mabel</p>
+  <iframe src="https://www.google.com/maps?q=Quinta%20La%20Mabel&output=embed"></iframe>
 
-<section>
-  <div class="card">
-    <div id="reloj">
-      <div class="tiempo"><div class="numero" id="d"></div><div class="label">DIAS</div></div>
-      <div class="tiempo"><div class="numero" id="h"></div><div class="label">HS</div></div>
-      <div class="tiempo"><div class="numero" id="m"></div><div class="label">MIN</div></div>
-      <div class="tiempo"><div class="numero" id="s"></div><div class="label">SEG</div></div>
+  <p>Confirmación de asistencia</p>
+  <button onclick="confirmar(true)">Confirmo asistencia</button>
+  <button class="secondary" onclick="confirmar(false)">No podré asistir</button>
+
+  <!-- RELOJ -->
+  <div id="reloj">
+    <div class="tiempo">
+      <div class="numero" id="d"></div>
+      <div class="label">DIAS</div>
+    </div>
+    <div class="tiempo">
+      <div class="numero" id="h"></div>
+      <div class="label">HS</div>
+    </div>
+    <div class="tiempo">
+      <div class="numero" id="m"></div>
+      <div class="label">MIN</div>
+    </div>
+    <div class="tiempo">
+      <div class="numero" id="s"></div>
+      <div class="label">SEG</div>
     </div>
   </div>
-</section>
 
 </div>
 
 <script>
 /* ================= CONFIG ================= */
-const WHATSAPP_NUMERO = "5491112345678"; // CAMBIAR POR EL REAL
+const WHATSAPP_NUMERO = "5491112345678"; // TU NUMERO
 
 const invitados = {
-  "Ana": "Querida Ana, queremos invitarte a compartir este día tan especial para nosotros.",
-  "Juan": "Querido Juan, será una gran alegría contar con tu presencia.",
-  "María": "María, nos encantaría que nos acompañes en este momento tan importante."
+  "Ana": "Ana, nos encantaría que seas parte de este momento tan importante.",
+  "Juan": "Juan, será una alegría compartir nuestro casamiento con vos.",
+  "María": "María, esperamos que puedas acompañarnos en este día tan especial."
 };
 
 let nombreActual = "";
 
-/* ================= ENTRAR ================= */
+/* ================= ENTRADA ================= */
 function entrar() {
   const nombre = nombreInput.value.trim();
   if (!invitados[nombre]) {
     error.innerText = "Nombre no encontrado";
     return;
   }
-
   nombreActual = nombre;
   mensajePersonal.innerText = invitados[nombre];
   acceso.style.display = "none";
@@ -248,15 +213,17 @@ const fecha = new Date("2026-03-06T00:00:00");
 
 setInterval(() => {
   const diff = fecha - new Date();
-  d.innerText = Math.floor(diff / (1000*60*60*24));
-  h.innerText = Math.floor((diff / (1000*60*60)) % 24);
-  m.innerText = Math.floor((diff / (1000*60)) % 60);
-  s.innerText = Math.floor((diff / 1000) % 60);
+  d.innerText = Math.max(0, Math.floor(diff / (1000*60*60*24)));
+  h.innerText = Math.max(0, Math.floor((diff / (1000*60*60)) % 24));
+  m.innerText = Math.max(0, Math.floor((diff / (1000*60)) % 60));
+  s.innerText = Math.max(0, Math.floor((diff / 1000) % 60));
 }, 1000);
 </script>
 
 </body>
 </html>
+
+
 
 
 
