@@ -8,60 +8,241 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Cormorant Garamond',serif;
-  background:#f4efe6;
-  color:#4a443c
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.wrapper{max-width:420px;margin:auto;padding:46px 22px;text-align:center}
-.section{margin:36px 0}
-.divider{width:60%;height:1px;margin:28px auto;background:linear-gradient(to right,transparent,#cfc9bd,transparent)}
-h1{font-size:2.6rem;font-style:italic}
-h2{font-size:1.5rem;font-style:italic}
-p{font-size:1.05rem;line-height:1.7}
-input{
-  width:100%;padding:14px;border-radius:28px;
-  border:1px solid #cfc9bd;margin-top:14px;
-  text-align:center;font-family:inherit
+
+/* ================= BODY ================= */
+body {
+  font-family: 'Cormorant Garamond', serif;
+  color: #4a443c;
+  min-height: 100vh;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0.015),
+      rgba(0,0,0,0.015) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    #f4efe6;
 }
-button{
-  width:100%;padding:14px;border-radius:28px;
-  background:#EDE8D0;border:none;margin-top:14px;
-  font-family:inherit;cursor:pointer
+
+/* ================= CONTENEDOR ================= */
+.wrapper {
+  max-width: 420px;
+  margin: auto;
+  padding: 46px 22px;
+  text-align: center;
 }
-button.secondary{background:#e3dec6}
-iframe{width:100%;height:190px;border:none;border-radius:14px;margin-top:14px}
-.countdown-box{
-  border:1px solid #d6cfbf;
-  border-radius:22px;
-  padding:20px;background:rgba(255,255,255,.4)
+
+/* ================= SECCIONES ================= */
+.section {
+  margin: 44px 0;
 }
-#reloj{display:flex;justify-content:space-between}
-.numero{font-size:2.2rem}
-.label{font-size:.7rem;opacity:.6}
-#error{color:#8b2e2e;margin-top:12px}
-#ok{color:#4a6b3c;margin-top:12px}
-#invitacion{display:none}
+
+/* ================= DIVISOR ================= */
+.divider {
+  width: 60%;
+  height: 1px;
+  margin: 36px auto;
+  background: linear-gradient(to right, transparent, #cfc9bd, transparent);
+}
+
+/* ================= TEXTOS ================= */
+h1 {
+  font-size: 2.6rem;
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #3d382f;
+}
+
+h2 {
+  font-size: 1.55rem;
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #3d382f;
+}
+
+p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+/* ================= INPUT ================= */
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 28px;
+  border: 1px solid #cfc9bd;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 14px;
+  background: rgba(255,255,255,0.9);
+  font-family: inherit;
+}
+
+/* ================= BOTONES ================= */
+button {
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 28px;
+  border: none;
+  background: #EDE8D0;
+  color: #4a443c;
+  font-size: 1.05rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+button.secondary {
+  background: #e3dec6;
+}
+
+/* ================= MAPAS ================= */
+iframe {
+  width: 100%;
+  height: 190px;
+  border-radius: 14px;
+  border: none;
+  margin-top: 14px;
+  filter: grayscale(15%) contrast(95%);
+}
+
+/* ================= CONTADOR ================= */
+.countdown-box {
+  border: 1px solid #d6cfbf;
+  border-radius: 22px;
+  padding: 22px 16px;
+  background: rgba(255,255,255,0.35);
+}
+
+#reloj {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tiempo {
+  flex: 1;
+}
+
+.numero {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.label {
+  font-size: 0.7rem;
+  opacity: 0.65;
+  letter-spacing: 1px;
+}
+
+/* ================= OCULTOS ================= */
+#invitacion { display: none; }
+.error { color: #8b2e2e; margin-top: 12px; }
+
+/* ================= FOTO PANEL (AGREGADO) ================= */
+.photo-panel {
+  margin: 24px auto 36px;
+  max-width: 260px;
+  border-radius: 140px;
+  overflow: hidden;
+  border: 2px solid #d8caa0;
+  background: #fff;
+}
+
+.photo-panel img {
+  width: 100%;
+  display: block;
+}
+
+/* ================= CORAZONES FONDO (AGREGADO) ================= */
+.hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle at 30% 30%, #f5e6a8, #c9a33b);
+  transform: rotate(45deg);
+  animation: float 14s linear infinite, pulse 3s ease-in-out infinite;
+  opacity: 0.35;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -8px;
+  left: 0;
+}
+
+.heart::after {
+  left: -8px;
+  top: 0;
+}
+
+@keyframes float {
+  from { transform: translateY(110vh) rotate(45deg); }
+  to   { transform: translateY(-10vh) rotate(45deg); }
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1) rotate(45deg); }
+  50% { transform: scale(1.15) rotate(45deg); }
+}
 </style>
 </head>
 
 <body>
 
+<!-- CORAZONES -->
+<div class="hearts" id="hearts"></div>
+
+<!-- ACCESO -->
 <div class="wrapper" id="acceso">
   <h1>Invitación</h1>
-  <p>Ingresá tu nombre</p>
+  <p>Ingresá tu nombre para continuar</p>
   <input id="nombreInput" placeholder="Tu nombre">
   <button onclick="entrar()">Ingresar</button>
-  <p id="error"></p>
+  <p class="error" id="error"></p>
 </div>
 
+<!-- INVITACIÓN -->
 <div class="wrapper" id="invitacion">
 
   <div class="section">
     <h1>Fabian & Maira</h1>
+
+    <!-- FOTO AGREGADA -->
+    <div class="photo-panel">
+      <img src="foto.jpg" alt="Fabian y Maira">
+    </div>
+
     <p id="mensajePersonal"></p>
-    <p>Con mucha alegría queremos invitarte a compartir nuestro día.</p>
+    <p>
+      Con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.
+    </p>
   </div>
 
   <div class="divider"></div>
@@ -69,17 +250,17 @@ iframe{width:100%;height:190px;border:none;border-radius:14px;margin-top:14px}
   <div class="section">
     <h2>Civil</h2>
     <p>06 de marzo de 2026 · 9:55</p>
-    <p>Registro Provincial de las Personas – Caseros</p>
+    <p>Delegación Registro Provincial de las Personas – Caseros</p>
     <iframe src="https://www.google.com/maps?q=Registro%20Provincial%20de%20las%20Personas%20Caseros&output=embed"></iframe>
   </div>
 
   <div class="section">
     <div class="countdown-box">
       <div id="reloj">
-        <div><div class="numero" id="d"></div><div class="label">DIAS</div></div>
-        <div><div class="numero" id="h"></div><div class="label">HS</div></div>
-        <div><div class="numero" id="m"></div><div class="label">MIN</div></div>
-        <div><div class="numero" id="s"></div><div class="label">SEG</div></div>
+        <div class="tiempo"><div class="numero" id="d"></div><div class="label">DIAS</div></div>
+        <div class="tiempo"><div class="numero" id="h"></div><div class="label">HS</div></div>
+        <div class="tiempo"><div class="numero" id="m"></div><div class="label">MIN</div></div>
+        <div class="tiempo"><div class="numero" id="s"></div><div class="label">SEG</div></div>
       </div>
     </div>
   </div>
@@ -95,70 +276,78 @@ iframe{width:100%;height:190px;border:none;border-radius:14px;margin-top:14px}
 
   <div class="section">
     <h2>¿Qué canciones no pueden faltar?</h2>
-    <input id="cancion" placeholder="Canción o artista">
+    <p>Queremos armar una noche inolvidable y tu música es parte de eso.</p>
+    <input id="cancion" placeholder="Escribí una canción o artista">
   </div>
 
   <div class="divider"></div>
 
   <div class="section">
+    <p>Confirmación de asistencia</p>
     <button onclick="confirmar(true)">Confirmo asistencia</button>
     <button class="secondary" onclick="confirmar(false)">No podré asistir</button>
-    <p id="ok"></p>
   </div>
 
 </div>
 
 <script>
-const API_URL="https://script.google.com/macros/s/AKfycbwhfN8KwP_sUNNMUJVBrV537XG6JrhM2MIjfOmOIpq6QXa0EHLTB0HewvamyY8HakBE_Q/exec";
+const API_URL = "PEGAR_ACA_TU_URL_DEL_SCRIPT";
 
-const invitados={
-  "Ana":"Ana, nos encantaría que seas parte.",
-  "Juan":"Juan, será una alegría compartirlo con vos.",
-  "María":"María, esperamos verte en este día especial."
+const invitados = {
+  "Ana": "Ana, nos encantaría que seas parte de este momento tan importante.",
+  "Juan": "Juan, será una alegría compartir nuestro casamiento con vos.",
+  "María": "María, esperamos que puedas acompañarnos en este día tan especial."
 };
 
-let nombreActual="";
+let nombreActual = "";
 
-function entrar(){
-  const n=nombreInput.value.trim();
-  if(!invitados[n]){
-    error.innerText="Nombre no encontrado";
+function entrar() {
+  const nombre = nombreInput.value.trim();
+  if (!invitados[nombre]) {
+    error.innerText = "Nombre no encontrado";
     return;
   }
-  nombreActual=n;
-  mensajePersonal.innerText=invitados[n];
-  acceso.style.display="none";
-  invitacion.style.display="block";
+  nombreActual = nombre;
+  mensajePersonal.innerText = invitados[nombre];
+  acceso.style.display = "none";
+  invitacion.style.display = "block";
 }
 
-function confirmar(asiste){
-  const cancion=document.getElementById("cancion").value;
+function confirmar(asiste) {
+  const cancion = document.getElementById("cancion").value;
 
-  fetch(API_URL,{
-    method:"POST",
-    mode:"no-cors",
-    headers:{"Content-Type":"application/x-www-form-urlencoded"},
-    body:new URLSearchParams({
-      nombre:nombreActual,
-      asistencia:asiste?"Sí":"No",
-      cancion:cancion
+  fetch(API_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      nombre: nombreActual,
+      asistencia: asiste ? "Sí" : "No",
+      cancion: cancion
     })
   });
-
-  ok.innerText="Gracias, tu respuesta fue registrada.";
 }
 
-const fecha=new Date("2026-03-06T00:00:00");
-setInterval(()=>{
-  const diff=fecha-new Date();
-  d.innerText=Math.floor(diff/86400000);
-  h.innerText=Math.floor(diff/3600000)%24;
-  m.innerText=Math.floor(diff/60000)%60;
-  s.innerText=Math.floor(diff/1000)%60;
-},1000);
+const fecha = new Date("2026-03-06T00:00:00");
+setInterval(() => {
+  const diff = fecha - new Date();
+  d.innerText = Math.max(0, Math.floor(diff / (1000*60*60*24)));
+  h.innerText = Math.max(0, Math.floor((diff / (1000*60*60)) % 24));
+  m.innerText = Math.max(0, Math.floor((diff / (1000*60)) % 60));
+  s.innerText = Math.max(0, Math.floor((diff / 1000) % 60));
+}, 1000);
+
+// corazones
+const heartsContainer = document.getElementById("hearts");
+for (let i = 0; i < 32; i++) {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDelay = Math.random() * 12 + "s";
+  h.style.animationDuration = 10 + Math.random() * 6 + "s";
+  heartsContainer.appendChild(h);
+}
 </script>
 
 </body>
 </html>
-
-
