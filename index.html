@@ -8,159 +8,162 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-body{
-  font-family:'Cormorant Garamond',serif;
-  color:#4a443c;
-  min-height:100vh;
+/* ===== BODY ===== */
+body {
+  font-family: 'Cormorant Garamond', serif;
+  color: #4a443c;
+  min-height: 100vh;
   background:
     repeating-linear-gradient(
       0deg,
-      rgba(0,0,0,.015),
-      rgba(0,0,0,.015) 1px,
+      rgba(0,0,0,0.015),
+      rgba(0,0,0,0.015) 1px,
       transparent 1px,
       transparent 3px
     ),
     #f4efe6;
-  animation:fadeIn 1.4s ease;
-  overflow-x:hidden;
-  position:relative;
+  animation: fadeIn 1.3s ease;
+  overflow-x: hidden;
 }
 
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(10px)}
-  to{opacity:1;transform:none}
-}
-
-/* ===== CORAZONES ===== */
-.heart{
-  position:fixed;
-  font-size:20px;
-  color:#d4af37;
-  opacity:.35;
-  animation:beat 3.2s infinite ease-in-out;
-  pointer-events:none;
-  z-index:0;
-}
-
-@keyframes beat{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.25)}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
 }
 
 /* ===== CONTENEDOR ===== */
-.wrapper{
-  max-width:420px;
-  margin:auto;
-  padding:46px 22px;
-  text-align:center;
-  position:relative;
-  z-index:2;
+.wrapper {
+  max-width: 420px;
+  margin: auto;
+  padding: 46px 22px;
+  text-align: center;
 }
 
-.section{margin:40px 0}
+/* ===== SECCIONES ===== */
+.section { margin: 40px 0; }
 
-.divider{
-  width:60%;
-  height:1px;
-  margin:34px auto;
-  background:linear-gradient(to right,transparent,#cfc9bd,transparent);
+.divider {
+  width: 60%;
+  height: 1px;
+  margin: 34px auto;
+  background: linear-gradient(to right, transparent, #cfc9bd, transparent);
 }
 
-h1{
-  font-size:2.6rem;
-  font-style:italic;
-  font-weight:600;
-  margin-bottom:14px;
-  color:#3d382f;
+/* ===== TEXTOS ===== */
+h1 {
+  font-size: 2.6rem;
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #3d382f;
 }
 
-h2{
-  font-size:1.55rem;
-  font-style:italic;
-  margin-bottom:12px;
+h2 {
+  font-size: 1.55rem;
+  font-style: italic;
+  margin-bottom: 12px;
 }
 
-p{
-  font-size:1.05rem;
-  line-height:1.7;
-  margin-bottom:10px;
+p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 10px;
 }
 
-input{
-  width:100%;
-  padding:14px;
-  border-radius:28px;
-  border:1px solid #cfc9bd;
-  font-size:1rem;
-  text-align:center;
-  margin-top:14px;
-  background:rgba(255,255,255,.9);
-  font-family:inherit;
+/* ===== INPUT ===== */
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 28px;
+  border: 1px solid #cfc9bd;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 14px;
+  background: rgba(255,255,255,0.9);
+  font-family: inherit;
 }
 
-button{
-  width:100%;
-  margin-top:16px;
-  padding:14px;
-  border-radius:28px;
-  border:none;
-  background:#EDE8D0;
-  color:#4a443c;
-  font-size:1.05rem;
-  cursor:pointer;
-  font-family:inherit;
+/* ===== BOTONES ===== */
+button {
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 28px;
+  border: none;
+  background: #EDE8D0;
+  color: #4a443c;
+  font-size: 1.05rem;
+  cursor: pointer;
+  font-family: inherit;
 }
 
-button.secondary{background:#e3dec6}
-
-iframe{
-  width:100%;
-  height:190px;
-  border-radius:14px;
-  border:none;
-  margin-top:14px;
-  filter:grayscale(15%) contrast(95%);
+button.secondary {
+  background: #e3dec6;
 }
 
-.countdown-box{
-  border:1px solid #d6cfbf;
-  border-radius:22px;
-  padding:22px 16px;
-  background:rgba(255,255,255,.35);
+/* ===== MAPAS ===== */
+iframe {
+  width: 100%;
+  height: 190px;
+  border-radius: 14px;
+  border: none;
+  margin-top: 14px;
+  filter: grayscale(15%) contrast(95%);
 }
 
-#reloj{
-  display:flex;
-  justify-content:space-between;
+/* ===== CONTADOR ===== */
+.countdown-box {
+  border: 1px solid #d6cfbf;
+  border-radius: 22px;
+  padding: 22px 16px;
+  background: rgba(255,255,255,0.35);
 }
 
-.numero{font-size:2.4rem;font-weight:600}
-.label{font-size:.7rem;opacity:.65;letter-spacing:1px}
-
-.photo-panel img{
-  width:100%;
-  border-radius:22px;
-  box-shadow:0 12px 28px rgba(0,0,0,.15);
+#reloj {
+  display: flex;
+  justify-content: space-between;
 }
 
-#error{color:#8b2e2e;margin-top:12px}
-#invitacion{display:none}
+.numero {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.label {
+  font-size: 0.7rem;
+  opacity: 0.65;
+  letter-spacing: 1px;
+}
+
+/* ===== OCULTOS ===== */
+#invitacion { display: none; }
+#error { color: #8b2e2e; margin-top: 12px; }
+
+/* ===== MENSAJE DE ESTADO ===== */
+.estado {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.96);
+  border: 1px solid #d6cfbf;
+  padding: 14px 22px;
+  border-radius: 22px;
+  font-size: 0.95rem;
+  color: #4a443c;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 999;
+}
+
+.estado.visible { opacity: 1; }
 </style>
 </head>
 
 <body>
-
-<!-- CORAZONES -->
-<div class="heart" style="top:12%;left:15%">❤</div>
-<div class="heart" style="top:35%;left:85%">❤</div>
-<div class="heart" style="top:65%;left:8%">❤</div>
-<div class="heart" style="top:80%;left:92%">❤</div>
-<div class="heart" style="top:27%;left:32%">❤</div>
-<div class="heart" style="top:60%;left:60%">❤</div>
-<div class="heart" style="top:36%;left:42%">❤</div>
-<div class="heart" style="top:22%;left:50%">❤</div>
 
 <!-- ACCESO -->
 <div class="wrapper" id="acceso">
@@ -177,12 +180,9 @@ iframe{
   <div class="section">
     <h1>Fabian & Maira</h1>
     <p id="mensajePersonal"></p>
-
-    <div class="photo-panel">
-      <img src="foto.jpeg" alt="Fabian y Maira">
-    </div>
-
-    <p>Con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.</p>
+    <p>
+      Con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.
+    </p>
   </div>
 
   <div class="divider"></div>
@@ -229,54 +229,56 @@ iframe{
 
 </div>
 
+<!-- MENSAJE -->
+<div id="mensajeEstado" class="estado"></div>
+
 <script>
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbxPRlPxMZS9TaOpS5pEdScUjf8543hbirauFJRc2G_lEeRgK2Ru0OBQwflSBIdc6WNaZg/exec";
 
-const invitados={
-  "Ana":"Ana, nos encantaría que seas parte de este momento.",
-  "Juan":"Juan, será una alegría compartir nuestro casamiento con vos.",
-  "María":"María, esperamos que puedas acompañarnos.",
-};
+let nombreActual = "";
 
-let nombreActual="";
-
-function entrar(){
-  const n=nombreInput.value.trim();
-  if(!invitados[n]){
-    error.textContent="Nombre no encontrado";
+function entrar() {
+  const nombre = nombreInput.value.trim();
+  if (!nombre) {
+    error.textContent = "Por favor ingresá tu nombre";
     return;
   }
-  nombreActual=n;
-  mensajePersonal.textContent=invitados[n];
-  acceso.style.display="none";
-  invitacion.style.display="block";
+  nombreActual = nombre;
+  mensajePersonal.textContent = `Hola ${nombre}, queremos invitarte a compartir este momento tan especial junto a nosotros.`;
+  acceso.style.display = "none";
+  invitacion.style.display = "block";
 }
 
-function enviar(asiste){
-  fetch(ENDPOINT,{
-    method:"POST",
-    body:JSON.stringify({
-      nombre:nombreActual,
-      asistencia:asiste?"Sí":"No",
-      cancion:cancion.value
-    })
-  }).then(()=>alert("Respuesta guardada con éxito"));
+function enviar(asiste) {
+  const datos = new FormData();
+  datos.append("nombre", nombreActual);
+  datos.append("asistencia", asiste ? "Sí" : "No");
+  datos.append("cancion", document.getElementById("cancion").value);
+
+  fetch(ENDPOINT, {
+    method: "POST",
+    body: datos
+  })
+  .then(() => mostrarMensaje("Tu respuesta fue guardada con éxito. Gracias por acompañarnos."))
+  .catch(() => mostrarMensaje("Ocurrió un error. Intentá nuevamente."));
 }
 
-const fecha=new Date("2026-03-06T00:00:00");
-setInterval(()=>{
-  const diff=fecha-new Date();
-  d.textContent=Math.max(0,Math.floor(diff/86400000));
-  h.textContent=Math.max(0,Math.floor(diff/3600000)%24);
-  m.textContent=Math.max(0,Math.floor(diff/60000)%60);
-  s.textContent=Math.max(0,Math.floor(diff/1000)%60);
-},1000);
+function mostrarMensaje(texto) {
+  const box = document.getElementById("mensajeEstado");
+  box.textContent = texto;
+  box.classList.add("visible");
+  setTimeout(() => box.classList.remove("visible"), 4000);
+}
+
+const fecha = new Date("2026-03-06T00:00:00");
+setInterval(() => {
+  const diff = fecha - new Date();
+  d.textContent = Math.max(0, Math.floor(diff / 86400000));
+  h.textContent = Math.max(0, Math.floor(diff / 3600000) % 24);
+  m.textContent = Math.max(0, Math.floor(diff / 60000) % 60);
+  s.textContent = Math.max(0, Math.floor(diff / 1000) % 60);
+}, 1000);
 </script>
 
 </body>
 </html>
-
-
-
-
-
