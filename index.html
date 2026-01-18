@@ -10,7 +10,6 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ===== BODY ===== */
 body {
   font-family: 'Cormorant Garamond', serif;
   color: #4a443c;
@@ -33,7 +32,6 @@ body {
   to { opacity: 1; transform: none; }
 }
 
-/* ===== CONTENEDOR ===== */
 .wrapper {
   max-width: 420px;
   margin: auto;
@@ -41,8 +39,7 @@ body {
   text-align: center;
 }
 
-/* ===== SECCIONES ===== */
-.section { margin: 40px 0; }
+.section { margin: 36px 0; }
 
 .divider {
   width: 60%;
@@ -51,12 +48,11 @@ body {
   background: linear-gradient(to right, transparent, #cfc9bd, transparent);
 }
 
-/* ===== TEXTOS ===== */
 h1 {
   font-size: 2.6rem;
   font-style: italic;
   font-weight: 600;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
   color: #3d382f;
 }
 
@@ -72,7 +68,17 @@ p {
   margin-bottom: 10px;
 }
 
-/* ===== INPUT ===== */
+/* FOTO */
+.photo-panel {
+  margin: 22px 0 28px;
+}
+
+.photo-panel img {
+  width: 100%;
+  border-radius: 22px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+
 input {
   width: 100%;
   padding: 14px;
@@ -85,7 +91,6 @@ input {
   font-family: inherit;
 }
 
-/* ===== BOTONES ===== */
 button {
   width: 100%;
   margin-top: 16px;
@@ -99,11 +104,8 @@ button {
   font-family: inherit;
 }
 
-button.secondary {
-  background: #e3dec6;
-}
+button.secondary { background: #e3dec6; }
 
-/* ===== MAPAS ===== */
 iframe {
   width: 100%;
   height: 190px;
@@ -113,7 +115,6 @@ iframe {
   filter: grayscale(15%) contrast(95%);
 }
 
-/* ===== CONTADOR ===== */
 .countdown-box {
   border: 1px solid #d6cfbf;
   border-radius: 22px;
@@ -126,22 +127,12 @@ iframe {
   justify-content: space-between;
 }
 
-.numero {
-  font-size: 2.4rem;
-  font-weight: 600;
-}
+.numero { font-size: 2.4rem; font-weight: 600; }
+.label { font-size: 0.7rem; opacity: 0.65; }
 
-.label {
-  font-size: 0.7rem;
-  opacity: 0.65;
-  letter-spacing: 1px;
-}
-
-/* ===== OCULTOS ===== */
 #invitacion { display: none; }
 #error { color: #8b2e2e; margin-top: 12px; }
 
-/* ===== MENSAJE DE ESTADO ===== */
 .estado {
   position: fixed;
   bottom: 22px;
@@ -177,13 +168,19 @@ iframe {
 <!-- INVITACIÓN -->
 <div class="wrapper" id="invitacion">
 
-  <div class="section">
-    <h1>Fabian & Maira</h1>
-    <p id="mensajePersonal"></p>
-    <p>
-      Con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.
-    </p>
+  <!-- TITULO -->
+  <h1>Fabian & Maira</h1>
+
+  <!-- IMAGEN ENTRE TITULO Y CONTENIDO -->
+  <div class="photo-panel">
+    <img src="foto.jpg" alt="Fabian y Maira">
   </div>
+
+  <!-- TEXTO -->
+  <p id="mensajePersonal"></p>
+  <p>
+    Con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.
+  </p>
 
   <div class="divider"></div>
 
@@ -229,12 +226,10 @@ iframe {
 
 </div>
 
-<!-- MENSAJE -->
 <div id="mensajeEstado" class="estado"></div>
 
 <script>
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbxPRlPxMZS9TaOpS5pEdScUjf8543hbirauFJRc2G_lEeRgK2Ru0OBQwflSBIdc6WNaZg/exec";
-
 let nombreActual = "";
 
 function entrar() {
@@ -255,12 +250,9 @@ function enviar(asiste) {
   datos.append("asistencia", asiste ? "Sí" : "No");
   datos.append("cancion", document.getElementById("cancion").value);
 
-  fetch(ENDPOINT, {
-    method: "POST",
-    body: datos
-  })
-  .then(() => mostrarMensaje("Tu respuesta fue guardada con éxito. Gracias por acompañarnos."))
-  .catch(() => mostrarMensaje("Ocurrió un error. Intentá nuevamente."));
+  fetch(ENDPOINT, { method: "POST", body: datos })
+    .then(() => mostrarMensaje("Tu respuesta fue guardada con éxito. Gracias por acompañarnos."))
+    .catch(() => mostrarMensaje("Ocurrió un error. Intentá nuevamente."));
 }
 
 function mostrarMensaje(texto) {
@@ -282,3 +274,4 @@ setInterval(() => {
 
 </body>
 </html>
+
