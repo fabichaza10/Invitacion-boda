@@ -8,8 +8,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* BODY */
 body {
   font-family: 'Cormorant Garamond', serif;
   color: #4a443c;
@@ -23,24 +29,54 @@ body {
       transparent 3px
     ),
     #f4efe6;
-  animation: fadeIn 1.3s ease;
+  animation: fadeIn 1.2s ease;
   overflow-x: hidden;
+  position: relative;
 }
 
+/* FADE IN */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: none; }
 }
 
+/* CORAZONES */
+.hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  font-size: 22px;
+  color: #c9a441;
+  opacity: 0.22;
+  animation: pulse 3.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
+/* CONTENEDOR */
 .wrapper {
   max-width: 420px;
   margin: auto;
   padding: 46px 22px;
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
-.section { margin: 36px 0; }
+/* SECCIONES */
+.section {
+  margin: 36px 0;
+}
 
+/* DIVISOR */
 .divider {
   width: 60%;
   height: 1px;
@@ -48,6 +84,7 @@ body {
   background: linear-gradient(to right, transparent, #cfc9bd, transparent);
 }
 
+/* TEXTOS */
 h1 {
   font-size: 2.6rem;
   font-style: italic;
@@ -60,6 +97,7 @@ h2 {
   font-size: 1.55rem;
   font-style: italic;
   margin-bottom: 12px;
+  color: #3d382f;
 }
 
 p {
@@ -70,15 +108,16 @@ p {
 
 /* FOTO */
 .photo-panel {
-  margin: 22px 0 28px;
+  margin: 22px 0 30px;
 }
 
 .photo-panel img {
   width: 100%;
   border-radius: 22px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
 }
 
+/* INPUT */
 input {
   width: 100%;
   padding: 14px;
@@ -91,6 +130,7 @@ input {
   font-family: inherit;
 }
 
+/* BOTONES */
 button {
   width: 100%;
   margin-top: 16px;
@@ -104,17 +144,20 @@ button {
   font-family: inherit;
 }
 
-button.secondary { background: #e3dec6; }
+button.secondary {
+  background: #e3dec6;
+}
 
+/* MAPAS */
 iframe {
   width: 100%;
   height: 190px;
   border-radius: 14px;
   border: none;
   margin-top: 14px;
-  filter: grayscale(15%) contrast(95%);
 }
 
+/* CONTADOR */
 .countdown-box {
   border: 1px solid #d6cfbf;
   border-radius: 22px;
@@ -127,34 +170,68 @@ iframe {
   justify-content: space-between;
 }
 
-.numero { font-size: 2.4rem; font-weight: 600; }
-.label { font-size: 0.7rem; opacity: 0.65; }
+.tiempo {
+  flex: 1;
+}
 
-#invitacion { display: none; }
-#error { color: #8b2e2e; margin-top: 12px; }
+.numero {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
 
+.label {
+  font-size: 0.7rem;
+  opacity: 0.65;
+}
+
+/* ESTADO */
 .estado {
   position: fixed;
   bottom: 22px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255,255,255,0.96);
+  background: rgba(255,255,255,0.95);
   border: 1px solid #d6cfbf;
   padding: 14px 22px;
   border-radius: 22px;
   font-size: 0.95rem;
-  color: #4a443c;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.4s ease;
   z-index: 999;
 }
 
-.estado.visible { opacity: 1; }
+.estado.visible {
+  opacity: 1;
+}
+
+/* OCULTOS */
+#invitacion { display: none; }
+#error { color: #8b2e2e; margin-top: 12px; }
 </style>
 </head>
 
 <body>
+
+<!-- CORAZONES -->
+<div class="hearts">
+  <span class="heart" style="top:5%; left:10%">♥</span>
+  <span class="heart" style="top:12%; left:75%">♥</span>
+  <span class="heart" style="top:20%; left:40%">♥</span>
+  <span class="heart" style="top:28%; left:85%">♥</span>
+  <span class="heart" style="top:35%; left:15%">♥</span>
+  <span class="heart" style="top:42%; left:60%">♥</span>
+  <span class="heart" style="top:48%; left:30%">♥</span>
+  <span class="heart" style="top:55%; left:80%">♥</span>
+  <span class="heart" style="top:62%; left:20%">♥</span>
+  <span class="heart" style="top:68%; left:50%">♥</span>
+  <span class="heart" style="top:74%; left:90%">♥</span>
+  <span class="heart" style="top:80%; left:35%">♥</span>
+  <span class="heart" style="top:86%; left:65%">♥</span>
+  <span class="heart" style="top:90%; left:10%">♥</span>
+  <span class="heart" style="top:92%; left:55%">♥</span>
+  <span class="heart" style="top:96%; left:85%">♥</span>
+</div>
 
 <!-- ACCESO -->
 <div class="wrapper" id="acceso">
@@ -168,109 +245,19 @@ iframe {
 <!-- INVITACIÓN -->
 <div class="wrapper" id="invitacion">
 
-  <!-- TITULO -->
   <h1>Fabian & Maira</h1>
 
-  <!-- IMAGEN ENTRE TITULO Y CONTENIDO -->
   <div class="photo-panel">
     <img src="foto.jpeg" alt="Fabian y Maira">
   </div>
 
-  <!-- TEXTO -->
   <p id="mensajePersonal"></p>
+
   <p>
     Con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.
   </p>
 
-  <div class="divider"></div>
-
-  <div class="section">
-    <h2>Civil</h2>
-    <p>06 de marzo de 2026 · 9:55</p>
-    <p>Delegación Registro Provincial de las Personas – Caseros</p>
-    <iframe src="https://www.google.com/maps?q=Registro%20Provincial%20de%20las%20Personas%20Caseros&output=embed"></iframe>
-  </div>
-
-  <div class="section">
-    <div class="countdown-box">
-      <div id="reloj">
-        <div><div class="numero" id="d"></div><div class="label">DIAS</div></div>
-        <div><div class="numero" id="h"></div><div class="label">HS</div></div>
-        <div><div class="numero" id="m"></div><div class="label">MIN</div></div>
-        <div><div class="numero" id="s"></div><div class="label">SEG</div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Celebración</h2>
-    <p>06 de marzo de 2026 · 21:30</p>
-    <p>Quinta La Mabel</p>
-    <iframe src="https://www.google.com/maps?q=Quinta%20La%20Mabel&output=embed"></iframe>
-  </div>
-
-  <div class="divider"></div>
-
-  <div class="section">
-    <h2>¿Qué canción no puede faltar?</h2>
-    <input id="cancion" placeholder="Canción o artista">
-  </div>
-
-  <div class="divider"></div>
-
-  <div class="section">
-    <p>Confirmación de asistencia</p>
-    <button onclick="enviar(true)">Confirmo asistencia</button>
-    <button class="secondary" onclick="enviar(false)">No podré asistir</button>
-  </div>
-
 </div>
-
-<div id="mensajeEstado" class="estado"></div>
-
-<script>
-const ENDPOINT = "https://script.google.com/macros/s/AKfycby7ctV3h5L4SgwQ1T9y_TM-6RMzLPt_kMAhs0KMDbOlF0KwUR-YK-2vGd10VZiaON0yLQ/exec";
-let nombreActual = "";
-
-function entrar() {
-  const nombre = nombreInput.value.trim();
-  if (!nombre) {
-    error.textContent = "Por favor ingresá tu nombre";
-    return;
-  }
-  nombreActual = nombre;
-  mensajePersonal.textContent = `Hola ${nombre}, queremos invitarte a compartir este momento tan especial junto a nosotros.`;
-  acceso.style.display = "none";
-  invitacion.style.display = "block";
-}
-
-function enviar(asiste) {
-  const datos = new FormData();
-  datos.append("nombre", nombreActual);
-  datos.append("asistencia", asiste ? "Sí" : "No");
-  datos.append("cancion", document.getElementById("cancion").value);
-
-  fetch(ENDPOINT, { method: "POST", body: datos })
-    .then(() => mostrarMensaje("Tu respuesta fue guardada con éxito. Gracias por acompañarnos."))
-    .catch(() => mostrarMensaje("Ocurrió un error. Intentá nuevamente."));
-}
-
-function mostrarMensaje(texto) {
-  const box = document.getElementById("mensajeEstado");
-  box.textContent = texto;
-  box.classList.add("visible");
-  setTimeout(() => box.classList.remove("visible"), 4000);
-}
-
-const fecha = new Date("2026-03-06T00:00:00");
-setInterval(() => {
-  const diff = fecha - new Date();
-  d.textContent = Math.max(0, Math.floor(diff / 86400000));
-  h.textContent = Math.max(0, Math.floor(diff / 3600000) % 24);
-  m.textContent = Math.max(0, Math.floor(diff / 60000) % 60);
-  s.textContent = Math.max(0, Math.floor(diff / 1000) % 60);
-}, 1000);
-</script>
 
 </body>
 </html>
