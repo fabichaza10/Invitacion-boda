@@ -331,10 +331,18 @@ function normalizar(texto) {
     .toLowerCase()
     .trim();
 }
-
+function capitalizarNombre(texto) {
+  return texto
+    .toLowerCase()
+    .split(" ")
+    .map(p => p.charAt(0).toUpperCase() + p.slice(1))
+    .join(" ");
+}
 function entrar() {
-  const input = nombreInput.value;
-  const nombreNormalizado = normalizar(input);
+nombreActual = capitalizarNombre(input);
+
+mensajePersonal.textContent =
+  `Hola ${nombreActual}, con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.`;
 
   if (!INVITADOS.includes(nombreNormalizado)) {
     error.textContent = "Tu nombre no se encuentra en la lista de invitados";
@@ -379,6 +387,7 @@ setInterval(() => {
 
 </body>
 </html>
+
 
 
 
