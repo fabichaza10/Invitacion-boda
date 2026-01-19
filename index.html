@@ -9,17 +9,13 @@
 
 <style>
 /* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
 /* BODY */
 body {
-  font-family: 'Cormorant Garamond', serif;
-  color: #4a443c;
-  min-height: 100vh;
+  font-family:'Cormorant Garamond', serif;
+  color:#4a443c;
+  min-height:100vh;
   background:
     repeating-linear-gradient(
       0deg,
@@ -30,184 +26,160 @@ body {
     ),
     #f4efe6;
   animation: fadeIn 1.2s ease;
-  overflow-x: hidden;
-  position: relative;
+  overflow-x:hidden;
+  position:relative;
 }
 
-/* FADE IN */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: none; }
+  from { opacity:0; transform:translateY(12px); }
+  to { opacity:1; transform:none; }
 }
 
 /* CORAZONES */
 .hearts {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
 }
 
 .heart {
-  position: absolute;
-  font-size: 22px;
-  color: #c9a441;
-  opacity: 0.22;
-  animation: pulse 3.8s ease-in-out infinite;
+  position:absolute;
+  font-size:22px;
+  color:#c9a441;
+  opacity:0.22;
+  animation:pulse 3.8s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.25); }
+  0%,100%{ transform:scale(1); }
+  50%{ transform:scale(1.25); }
 }
 
 /* CONTENEDOR */
 .wrapper {
-  max-width: 420px;
-  margin: auto;
-  padding: 46px 22px;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-
-/* SECCIONES */
-.section {
-  margin: 36px 0;
+  max-width:420px;
+  margin:auto;
+  padding:46px 22px;
+  text-align:center;
+  position:relative;
+  z-index:2;
 }
 
 /* DIVISOR */
 .divider {
-  width: 60%;
-  height: 1px;
-  margin: 34px auto;
-  background: linear-gradient(to right, transparent, #cfc9bd, transparent);
+  width:60%;
+  height:1px;
+  margin:34px auto;
+  background:linear-gradient(to right, transparent, #cfc9bd, transparent);
 }
 
 /* TEXTOS */
 h1 {
-  font-size: 2.6rem;
-  font-style: italic;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: #3d382f;
+  font-size:2.6rem;
+  font-style:italic;
+  font-weight:600;
+  margin-bottom:10px;
+  color:#3d382f;
 }
 
 h2 {
-  font-size: 1.55rem;
-  font-style: italic;
-  margin-bottom: 12px;
-  color: #3d382f;
+  font-size:1.55rem;
+  font-style:italic;
+  margin-bottom:12px;
 }
 
 p {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  margin-bottom: 10px;
+  font-size:1.05rem;
+  line-height:1.7;
+  margin-bottom:10px;
 }
 
 /* FOTO */
-.photo-panel {
-  margin: 22px 0 30px;
-}
-
 .photo-panel img {
-  width: 100%;
-  border-radius: 22px;
-  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+  width:100%;
+  border-radius:22px;
+  box-shadow:0 14px 30px rgba(0,0,0,0.18);
+  margin:22px 0 30px;
 }
 
 /* INPUT */
 input {
-  width: 100%;
-  padding: 14px;
-  border-radius: 28px;
-  border: 1px solid #cfc9bd;
-  font-size: 1rem;
-  text-align: center;
-  margin-top: 14px;
-  background: rgba(255,255,255,0.9);
-  font-family: inherit;
+  width:100%;
+  padding:14px;
+  border-radius:28px;
+  border:1px solid #cfc9bd;
+  text-align:center;
+  margin-top:14px;
+  font-family:inherit;
 }
 
 /* BOTONES */
 button {
-  width: 100%;
-  margin-top: 16px;
-  padding: 14px;
-  border-radius: 28px;
-  border: none;
-  background: #EDE8D0;
-  color: #4a443c;
-  font-size: 1.05rem;
-  cursor: pointer;
-  font-family: inherit;
+  width:100%;
+  margin-top:16px;
+  padding:14px;
+  border-radius:28px;
+  border:none;
+  background:#EDE8D0;
+  font-family:inherit;
+  cursor:pointer;
 }
 
-button.secondary {
-  background: #e3dec6;
-}
+button.secondary { background:#e3dec6; }
 
 /* MAPAS */
 iframe {
-  width: 100%;
-  height: 190px;
-  border-radius: 14px;
-  border: none;
-  margin-top: 14px;
+  width:100%;
+  height:190px;
+  border-radius:14px;
+  border:none;
+  margin-top:14px;
 }
 
 /* CONTADOR */
 .countdown-box {
-  border: 1px solid #d6cfbf;
-  border-radius: 22px;
-  padding: 22px 16px;
-  background: rgba(255,255,255,0.35);
+  border:1px solid #d6cfbf;
+  border-radius:22px;
+  padding:22px 16px;
+  background:rgba(255,255,255,0.35);
 }
 
 #reloj {
-  display: flex;
-  justify-content: space-between;
-}
-
-.tiempo {
-  flex: 1;
+  display:flex;
+  justify-content:space-between;
 }
 
 .numero {
-  font-size: 2.4rem;
-  font-weight: 600;
+  font-size:2.4rem;
+  font-weight:600;
 }
 
 .label {
-  font-size: 0.7rem;
-  opacity: 0.65;
+  font-size:0.7rem;
+  opacity:0.65;
 }
 
-/* ESTADO */
+/* MENSAJE ESTADO */
 .estado {
-  position: fixed;
-  bottom: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255,255,255,0.95);
-  border: 1px solid #d6cfbf;
-  padding: 14px 22px;
-  border-radius: 22px;
-  font-size: 0.95rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: 999;
+  position:fixed;
+  bottom:22px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,0.95);
+  border:1px solid #d6cfbf;
+  padding:14px 22px;
+  border-radius:22px;
+  opacity:0;
+  transition:opacity .4s ease;
+  z-index:999;
 }
 
-.estado.visible {
-  opacity: 1;
-}
+.estado.visible { opacity:1; }
 
 /* OCULTOS */
-#invitacion { display: none; }
-#error { color: #8b2e2e; margin-top: 12px; }
+#invitacion { display:none; }
+#error { color:#8b2e2e; margin-top:12px; }
 </style>
 </head>
 
@@ -215,22 +187,14 @@ iframe {
 
 <!-- CORAZONES -->
 <div class="hearts">
-  <span class="heart" style="top:5%; left:10%">♥</span>
-  <span class="heart" style="top:12%; left:75%">♥</span>
-  <span class="heart" style="top:20%; left:40%">♥</span>
-  <span class="heart" style="top:28%; left:85%">♥</span>
-  <span class="heart" style="top:35%; left:15%">♥</span>
-  <span class="heart" style="top:42%; left:60%">♥</span>
-  <span class="heart" style="top:48%; left:30%">♥</span>
-  <span class="heart" style="top:55%; left:80%">♥</span>
-  <span class="heart" style="top:62%; left:20%">♥</span>
-  <span class="heart" style="top:68%; left:50%">♥</span>
-  <span class="heart" style="top:74%; left:90%">♥</span>
-  <span class="heart" style="top:80%; left:35%">♥</span>
-  <span class="heart" style="top:86%; left:65%">♥</span>
-  <span class="heart" style="top:90%; left:10%">♥</span>
-  <span class="heart" style="top:92%; left:55%">♥</span>
-  <span class="heart" style="top:96%; left:85%">♥</span>
+  <span class="heart" style="top:8%; left:12%">♥</span>
+  <span class="heart" style="top:18%; left:78%">♥</span>
+  <span class="heart" style="top:32%; left:25%">♥</span>
+  <span class="heart" style="top:45%; left:70%">♥</span>
+  <span class="heart" style="top:58%; left:15%">♥</span>
+  <span class="heart" style="top:72%; left:60%">♥</span>
+  <span class="heart" style="top:86%; left:35%">♥</span>
+  <span class="heart" style="top:92%; left:80%">♥</span>
 </div>
 
 <!-- ACCESO -->
@@ -244,7 +208,6 @@ iframe {
 
 <!-- INVITACIÓN -->
 <div class="wrapper" id="invitacion">
-
   <h1>Fabian & Maira</h1>
 
   <div class="photo-panel">
@@ -253,66 +216,82 @@ iframe {
 
   <p id="mensajePersonal"></p>
 
-
-
   <div class="divider"></div>
 
-  <div class="section">
-    <h2>Civil</h2>
-    <p>06 de marzo de 2026 · 9:55</p>
-    <p>Delegación Registro Provincial de las Personas – Caseros</p>
-    <iframe src="https://www.google.com/maps?q=Registro%20Provincial%20de%20las%20Personas%20Caseros&output=embed"></iframe>
-  </div>
-  <p>Faltan</p>
-  <div class="section">
-    <div class="countdown-box">
-      <div id="reloj">
-        <div><div class="numero" id="d"></div><div class="label">DIAS</div></div>
-        <div><div class="numero" id="h"></div><div class="label">HS</div></div>
-        <div><div class="numero" id="m"></div><div class="label">MIN</div></div>
-        <div><div class="numero" id="s"></div><div class="label">SEG</div></div>
-      </div>
+  <h2>Civil</h2>
+  <p>06 de marzo de 2026 · 9:55</p>
+  <p>Delegación Registro Provincial de las Personas – Caseros</p>
+  <iframe src="https://www.google.com/maps?q=Registro%20Provincial%20de%20las%20Personas%20Caseros&output=embed"></iframe>
+
+  <p style="margin-top:24px">Faltan</p>
+  <div class="countdown-box">
+    <div id="reloj">
+      <div><div class="numero" id="d"></div><div class="label">DIAS</div></div>
+      <div><div class="numero" id="h"></div><div class="label">HS</div></div>
+      <div><div class="numero" id="m"></div><div class="label">MIN</div></div>
+      <div><div class="numero" id="s"></div><div class="label">SEG</div></div>
     </div>
   </div>
 
-  <div class="section">
-    <h2>Celebración</h2>
-    <p>06 de marzo de 2026 · 21:30</p>
-    <p>Quinta La Mabel</p>
-    <iframe src="https://www.google.com/maps?q=Quinta%20La%20Mabel&output=embed"></iframe>
-  </div>
+  <div class="divider"></div>
+
+  <h2>Celebración</h2>
+  <p>06 de marzo de 2026 · 21:30</p>
+  <p>Quinta La Mabel</p>
+  <iframe src="https://www.google.com/maps?q=Quinta%20La%20Mabel&output=embed"></iframe>
 
   <div class="divider"></div>
 
-  <div class="section">
-    <h2>¿Qué canción no puede faltar?</h2>
-    <input id="cancion" placeholder="Canción o artista">
-  </div>
+  <h2>¿Qué canción no puede faltar?</h2>
+  <input id="cancion" placeholder="Canción o artista">
 
   <div class="divider"></div>
 
-  <div class="section">
-    <p>Confirmación de asistencia</p>
-    <button onclick="enviar(true)">Confirmo asistencia</button>
-    <button class="secondary" onclick="enviar(false)">No podré asistir</button>
-  </div>
-
+  <p>Confirmación de asistencia</p>
+  <button onclick="enviar(true)">Confirmo asistencia</button>
+  <button class="secondary" onclick="enviar(false)">No podré asistir</button>
 </div>
 
 <div id="mensajeEstado" class="estado"></div>
 
 <script>
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbxPRlPxMZS9TaOpS5pEdScUjf8543hbirauFJRc2G_lEeRgK2Ru0OBQwflSBIdc6WNaZg/exec";
+
+/* ===== LISTA DE INVITADOS =====
+   Todo en minúsculas, sin acentos
+*/
+const INVITADOS = [
+  "ana",
+  "juan",
+  "maria",
+  "carlos",
+  "lucia",
+  "pedro"
+];
+
 let nombreActual = "";
 
+function normalizar(texto) {
+  return texto
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+
 function entrar() {
-  const nombre = nombreInput.value.trim();
-  if (!nombre) {
-    error.textContent = "Por favor ingresá tu nombre";
+  const input = nombreInput.value;
+  const nombreNormalizado = normalizar(input);
+
+  if (!INVITADOS.includes(nombreNormalizado)) {
+    error.textContent = "Tu nombre no se encuentra en la lista de invitados";
     return;
   }
-  nombreActual = nombre;
-  mensajePersonal.textContent = `Hola ${nombre}, Con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.`;
+
+  nombreActual = input.trim();
+  mensajePersonal.textContent =
+    `Hola ${nombreActual}, con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.`;
+
   acceso.style.display = "none";
   invitacion.style.display = "block";
 }
@@ -323,8 +302,8 @@ function enviar(asiste) {
   datos.append("asistencia", asiste ? "Sí" : "No");
   datos.append("cancion", document.getElementById("cancion").value);
 
-  fetch(ENDPOINT, { method: "POST", body: datos })
-    .then(() => mostrarMensaje("Tu respuesta fue guardada con éxito. Gracias por acompañarnos."))
+  fetch(ENDPOINT, { method:"POST", body:datos })
+    .then(() => mostrarMensaje("Tu respuesta fue guardada con éxito."))
     .catch(() => mostrarMensaje("Ocurrió un error. Intentá nuevamente."));
 }
 
@@ -347,6 +326,3 @@ setInterval(() => {
 
 </body>
 </html>
-
-
-
