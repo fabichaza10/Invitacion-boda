@@ -167,6 +167,28 @@ iframe {
 
 #invitacion { display:none; }
 #error { color:#8b2e2e; margin-top:12px; }
+#botonMusica {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #c9a441;
+  opacity: 0.55;
+  cursor: pointer;
+  z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#botonMusica:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+#botonMusica.activo {
+  opacity: 0.9;
+}
 </style>
 </head>
 
@@ -176,20 +198,8 @@ iframe {
   Tu navegador no soporta audio.
 </audio>
 
-<button id="botonMusica" onclick="toggleMusica()" style="
-  position:fixed;
-  top:20px;
-  right:20px;
-  border:none;
-  background:rgba(255,255,255,0.8);
-  border-radius:50%;
-  width:48px;
-  height:48px;
-  font-size:20px;
-  cursor:pointer;
-  z-index:1000;
-">
-  🔊
+<button id="botonMusica" onclick="toggleMusica()" aria-label="Música">
+  ♫
 </button>
 
 <div class="hearts">
@@ -339,20 +349,21 @@ musica.volume = 0.25;
 function iniciarMusica() {
   musica.play().then(() => {
     reproduciendo = true;
-    botonMusica.textContent = "🔈";
+    botonMusica.classList.add("activo");
   }).catch(() => {});
 }
 
 function toggleMusica() {
   if (reproduciendo) {
     musica.pause();
-    botonMusica.textContent = "🔇";
+    botonMusica.style.opacity = "0.3";
   } else {
     musica.play();
-    botonMusica.textContent = "🔈";
+    botonMusica.style.opacity = "0.9";
   }
   reproduciendo = !reproduciendo;
 }
+
 
 // Iniciar música cuando el usuario entra a la invitación
 const originalEntrar = entrar;
@@ -365,6 +376,7 @@ entrar = function() {
 
 </body>
 </html>
+
 
 
 
