@@ -205,6 +205,26 @@ iframe {
 #botonMusica.activo {
   opacity: 0.9;
 }
+  /* MARCA DE AGUA FYM */
+.watermark {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 2px solid rgba(201, 164, 65, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  font-style: italic;
+  letter-spacing: 4px;
+  color: rgba(201, 164, 65, 0.18);
+  pointer-events: none;
+  z-index: 1;
+}
+
 </style>
 </head>
 
@@ -217,7 +237,7 @@ iframe {
 <button id="botonMusica" onclick="toggleMusica()" aria-label="Música">
   ♫
 </button>
-
+<div class="watermark">FYM</div>
 <div class="hearts">
   <span class="heart" style="top:10%; left:15%">♥</span>
   <span class="heart" style="top:25%; left:75%">♥</span>
@@ -279,7 +299,7 @@ iframe {
 <h2>¿No sabés qué regalarnos?</h2>
 <p style="font-size:0.95rem; opacity:0.85;">
 Tu presencia es lo más importante para nosotros.<br>
-Pero poder ser nuestro sponsor.
+Pero podes ser nuestro sponsor.
 </p>
 <h2>nuestraboda.fym.mp</h2>
   <div class="divider"></div>
@@ -418,6 +438,7 @@ function toggleMusica() {
 
 </body>
 </html>
+
 
 
 
