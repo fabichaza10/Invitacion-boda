@@ -169,15 +169,15 @@ iframe {
 #error { color:#8b2e2e; margin-top:12px; }
 #botonMusica {
   position: fixed;
-  top: 5px;
-  right: -357px;   /* esquina derecha */
+  top: 18px;
+  right: 18px;
   background: none;
   border: none;
   font-size: 22px;
   color: #c9a441;
   opacity: 0.55;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 9999;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -339,9 +339,20 @@ setInterval(() => {
   m.textContent = Math.max(0, Math.floor(diff / 60000) % 60);
   s.textContent = Math.max(0, Math.floor(diff / 1000) % 60);
 }, 1000);
-  const musica = document.getElementById("musica");
-const botonMusica = document.getElementById("botonMusica");
-let reproduciendo = false;
+<script>
+const musica = document.getElementById("musica");
+const boton = document.getElementById("botonMusica");
+
+function toggleMusica() {
+  if (musica.paused) {
+    musica.play();
+    boton.classList.add("activo");
+  } else {
+    musica.pause();
+    boton.classList.remove("activo");
+  }
+}
+</script>
 
 musica.volume = 0.25;
 
@@ -376,6 +387,7 @@ entrar = function() {
 
 </body>
 </html>
+
 
 
 
