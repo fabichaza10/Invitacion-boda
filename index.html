@@ -171,6 +171,26 @@ iframe {
 </head>
 
 <body>
+  <audio id="musica" loop>
+  <source src="cancion.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio.
+</audio>
+
+<button id="botonMusica" onclick="toggleMusica()" style="
+  position:fixed;
+  top:20px;
+  right:20px;
+  border:none;
+  background:rgba(255,255,255,0.8);
+  border-radius:50%;
+  width:48px;
+  height:48px;
+  font-size:20px;
+  cursor:pointer;
+  z-index:1000;
+">
+  🔊
+</button>
 
 <div class="hearts">
   <span class="heart" style="top:10%; left:15%">♥</span>
@@ -309,10 +329,43 @@ setInterval(() => {
   m.textContent = Math.max(0, Math.floor(diff / 60000) % 60);
   s.textContent = Math.max(0, Math.floor(diff / 1000) % 60);
 }, 1000);
+  const musica = document.getElementById("musica");
+const botonMusica = document.getElementById("botonMusica");
+let reproduciendo = false;
+
+musica.volume = 0.25;
+
+// Se activa cuando el usuario entra (por políticas del navegador)
+function iniciarMusica() {
+  musica.play().then(() => {
+    reproduciendo = true;
+    botonMusica.textContent = "🔈";
+  }).catch(() => {});
+}
+
+function toggleMusica() {
+  if (reproduciendo) {
+    musica.pause();
+    botonMusica.textContent = "🔇";
+  } else {
+    musica.play();
+    botonMusica.textContent = "🔈";
+  }
+  reproduciendo = !reproduciendo;
+}
+
+// Iniciar música cuando el usuario entra a la invitación
+const originalEntrar = entrar;
+entrar = function() {
+  originalEntrar();
+  iniciarMusica();
+};
+
 </script>
 
 </body>
 </html>
+
 
 
 
