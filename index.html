@@ -8,57 +8,118 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Cormorant Garamond',serif;
-  background:#f4efe6;
-  color:#4a443c;
-  animation:fadeIn 1.2s ease;
-}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+* { margin:0; padding:0; box-sizing:border-box; }
 
-.wrapper{
+body {
+  font-family:'Cormorant Garamond', serif;
+  color:#4a443c;
+  min-height:100vh;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0.015),
+      rgba(0,0,0,0.015) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    #f4efe6;
+  animation: fadeIn 1.2s ease;
+  overflow-x:hidden;
+  position:relative;
+}
+
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(12px); }
+  to { opacity:1; transform:none; }
+}
+
+/* CORAZONES */
+.hearts {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+}
+
+.heart {
+  position:absolute;
+  font-size:22px;
+  color:#c9a441;
+  opacity:0.22;
+  animation:pulse 3.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100%{ transform:scale(1); }
+  50%{ transform:scale(1.25); }
+}
+
+.wrapper {
   max-width:420px;
   margin:auto;
   padding:46px 22px;
   text-align:center;
+  position:relative;
+  z-index:2;
 }
 
-.hearts{position:fixed;inset:0;pointer-events:none}
-.heart{
-  position:absolute;
-  font-size:22px;
-  color:#c9a441;
-  opacity:.22;
-  animation:pulse 3.8s ease-in-out infinite;
+.divider {
+  width:60%;
+  height:1px;
+  margin:34px auto;
+  background:linear-gradient(to right, transparent, #cfc9bd, transparent);
 }
-@keyframes pulse{50%{transform:scale(1.25)}}
 
-.photo-panel img{
+h1 {
+  font-size:2.6rem;
+  font-style:italic;
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+h2 {
+  font-size:1.55rem;
+  font-style:italic;
+  margin-bottom:12px;
+}
+
+p {
+  font-size:1.05rem;
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.photo-panel img {
   width:100%;
   border-radius:22px;
+  box-shadow:0 14px 30px rgba(0,0,0,0.18);
   margin:22px 0 30px;
 }
 
-input,button{
+input {
   width:100%;
   padding:14px;
   border-radius:28px;
   border:1px solid #cfc9bd;
+  text-align:center;
   margin-top:14px;
   font-family:inherit;
 }
-button{background:#EDE8D0;border:none;cursor:pointer}
-button.secondary{background:#e3dec6}
 
-.divider{
-  width:60%;
-  height:1px;
-  margin:34px auto;
-  background:linear-gradient(to right,transparent,#cfc9bd,transparent);
+button {
+  width:100%;
+  margin-top:16px;
+  padding:14px;
+  border-radius:28px;
+  border:none;
+  background:#EDE8D0;
+  font-family:inherit;
+  cursor:pointer;
 }
 
-iframe{
+button.secondary { background:#e3dec6; }
+
+iframe {
   width:100%;
   height:190px;
   border-radius:14px;
@@ -66,23 +127,83 @@ iframe{
   margin-top:14px;
 }
 
-#invitacion{display:none}
-#error{color:#8b2e2e;margin-top:12px}
+.countdown-box {
+  border:1px solid #d6cfbf;
+  border-radius:22px;
+  padding:22px 16px;
+  background:rgba(255,255,255,0.35);
+}
 
-#botonMusica{
+#reloj {
+  display:flex;
+  justify-content:space-between;
+}
+
+.numero {
+  font-size:2.4rem;
+  font-weight:600;
+}
+
+.label {
+  font-size:0.7rem;
+  opacity:0.65;
+}
+
+.estado {
+  position:fixed;
+  bottom:22px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,0.95);
+  border:1px solid #d6cfbf;
+  padding:14px 22px;
+  border-radius:22px;
+  opacity:0;
+  transition:opacity .4s ease;
+  z-index:999;
+}
+
+.estado.visible { opacity:1; }
+
+#invitacion { display:none; }
+#error { color:#8b2e2e; margin-top:12px; }
+
+/* BOTÓN MÚSICA — CORREGIDO */
+#botonMusica {
   position:fixed;
   top:14px;
   right:14px;
+
   width:28px;
   height:28px;
-  background:transparent;
+
+  padding:0;
   border:none;
+  background:transparent;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   font-size:20px;
+  line-height:1;
+
   color:#c9a441;
-  opacity:.6;
+  opacity:0.55;
   cursor:pointer;
+
+  z-index:9999;
+  transition:opacity .3s ease, transform .3s ease;
 }
-#botonMusica.activo{opacity:1}
+
+#botonMusica:hover {
+  opacity:1;
+  transform:scale(1.08);
+}
+
+#botonMusica.activo {
+  opacity:0.9;
+}
 </style>
 </head>
 
@@ -92,13 +213,15 @@ iframe{
   <source src="Milo j - M.A.I (Letra).mp3" type="audio/mpeg">
 </audio>
 
-<button id="botonMusica" onclick="toggleMusica()">♫</button>
+<button id="botonMusica" aria-label="Música">♫</button>
 
 <div class="hearts">
-  <span class="heart" style="top:10%;left:15%">♥</span>
-  <span class="heart" style="top:30%;left:80%">♥</span>
-  <span class="heart" style="top:55%;left:20%">♥</span>
-  <span class="heart" style="top:75%;left:65%">♥</span>
+  <span class="heart" style="top:10%; left:15%">♥</span>
+  <span class="heart" style="top:25%; left:75%">♥</span>
+  <span class="heart" style="top:40%; left:30%">♥</span>
+  <span class="heart" style="top:55%; left:80%">♥</span>
+  <span class="heart" style="top:70%; left:20%">♥</span>
+  <span class="heart" style="top:85%; left:60%">♥</span>
 </div>
 
 <div class="wrapper" id="acceso">
@@ -113,82 +236,74 @@ iframe{
   <h1>Fabian & Maira</h1>
 
   <div class="photo-panel">
-    <img src="foto.jpeg">
+    <img src="foto.jpeg" alt="Fabian y Maira">
   </div>
 
   <p id="mensajePersonal"></p>
 
   <div class="divider"></div>
 
-  <p>06 de marzo de 2026</p>
+  <h2>Civil</h2>
+  <p>06 de marzo de 2026 · 9:55</p>
   <p>Delegación Registro Provincial de las Personas – Caseros</p>
   <iframe src="https://www.google.com/maps?q=Registro%20Provincial%20de%20las%20Personas%20Caseros&output=embed"></iframe>
 
+  <p style="margin-top:24px">Faltan</p>
+  <div class="countdown-box">
+    <div id="reloj">
+      <div><div class="numero" id="d"></div><div class="label">DIAS</div></div>
+      <div><div class="numero" id="h"></div><div class="label">HS</div></div>
+      <div><div class="numero" id="m"></div><div class="label">MIN</div></div>
+      <div><div class="numero" id="s"></div><div class="label">SEG</div></div>
+    </div>
+  </div>
+
   <div class="divider"></div>
 
-  <p>21:30 · Quinta La Mabel</p>
+  <h2>Celebración</h2>
+  <p>06 de marzo de 2026 · 21:30</p>
+  <p>Quinta La Mabel</p>
   <iframe src="https://www.google.com/maps?q=Quinta%20La%20Mabel&output=embed"></iframe>
 
   <div class="divider"></div>
 
-  <input id="cancion" placeholder="Canción que no puede faltar">
+  <h2>¿Qué canción no puede faltar?</h2>
+  <input id="cancion" placeholder="Canción o artista">
+
+  <div class="divider"></div>
 
   <button onclick="enviar(true)">Confirmo asistencia</button>
   <button class="secondary" onclick="enviar(false)">No podré asistir</button>
 </div>
 
-<div id="mensajeEstado"></div>
+<div id="mensajeEstado" class="estado"></div>
 
 <script>
-const ENDPOINT="TU_ENDPOINT_AQUI";
+const musica = document.getElementById("musica");
+const botonMusica = document.getElementById("botonMusica");
 
-const INVITADOS_RAW=[
-"Myriam Chazarreta","Daiana Chazarreta","Jimena Chazarreta","Agustina Chazarreta"
-];
+musica.volume = 0.25;
+let reproduciendo = false;
 
-const INVITADOS=INVITADOS_RAW.map(n=>normalizar(n));
-let nombreActual="";
-const musica=document.getElementById("musica");
-
-function normalizar(t){
-  return t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
-}
-
-function capitalizar(t){
-  return t.toLowerCase().split(" ").map(p=>p.charAt(0).toUpperCase()+p.slice(1)).join(" ");
-}
-
-function entrar(){
-  const input=nombreInput.value.trim();
-  const norm=normalizar(input);
-
-  if(!INVITADOS.includes(norm)){
-    error.textContent="Tu nombre no está en la lista";
-    return;
+botonMusica.addEventListener("click", () => {
+  if (musica.paused) {
+    musica.play();
+    botonMusica.classList.add("activo");
+    reproduciendo = true;
+  } else {
+    musica.pause();
+    botonMusica.classList.remove("activo");
+    reproduciendo = false;
   }
+});
 
-  nombreActual=capitalizar(input);
-  mensajePersonal.textContent=`Hola ${nombreActual}, con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.`;
-
-  acceso.style.display="none";
-  invitacion.style.display="block";
-
-  musica.volume=0.25;
+const originalEntrar = entrar;
+entrar = function() {
+  originalEntrar();
   musica.play().catch(()=>{});
-}
-
-function toggleMusica(){
-  musica.paused ? musica.play() : musica.pause();
-}
-
-function enviar(asiste){
-  const fd=new FormData();
-  fd.append("nombre",nombreActual);
-  fd.append("asistencia",asiste?"Sí":"No");
-  fd.append("cancion",cancion.value);
-
-  fetch(ENDPOINT,{method:"POST",body:fd});
-}
+  botonMusica.classList.add("activo");
+  reproduciendo = true;
+};
 </script>
 
 </body>
