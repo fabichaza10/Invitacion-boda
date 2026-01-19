@@ -169,21 +169,37 @@ iframe {
 #error { color:#8b2e2e; margin-top:12px; }
 #botonMusica {
   position: fixed;
-  top: 18px;
-  right: 18px;
-  background: none;
+  top: 14px;
+  right: 14px;
+
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
   border: none;
-  font-size: 22px;
+
+  font-size: 20px;
+  line-height: 1;
+
   color: #c9a441;
   opacity: 0.55;
   cursor: pointer;
+
   z-index: 9999;
+
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 #botonMusica:hover {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 #botonMusica.activo {
@@ -387,6 +403,7 @@ entrar = function() {
 
 </body>
 </html>
+
 
 
 
