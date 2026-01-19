@@ -8,10 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
 <style>
-/* RESET */
 * { margin:0; padding:0; box-sizing:border-box; }
 
-/* BODY */
 body {
   font-family:'Cormorant Garamond', serif;
   color:#4a443c;
@@ -56,7 +54,6 @@ body {
   50%{ transform:scale(1.25); }
 }
 
-/* CONTENEDOR */
 .wrapper {
   max-width:420px;
   margin:auto;
@@ -66,7 +63,6 @@ body {
   z-index:2;
 }
 
-/* DIVISOR */
 .divider {
   width:60%;
   height:1px;
@@ -74,13 +70,11 @@ body {
   background:linear-gradient(to right, transparent, #cfc9bd, transparent);
 }
 
-/* TEXTOS */
 h1 {
   font-size:2.6rem;
   font-style:italic;
   font-weight:600;
   margin-bottom:10px;
-  color:#3d382f;
 }
 
 h2 {
@@ -95,7 +89,6 @@ p {
   margin-bottom:10px;
 }
 
-/* FOTO */
 .photo-panel img {
   width:100%;
   border-radius:22px;
@@ -103,7 +96,6 @@ p {
   margin:22px 0 30px;
 }
 
-/* INPUT */
 input {
   width:100%;
   padding:14px;
@@ -114,7 +106,6 @@ input {
   font-family:inherit;
 }
 
-/* BOTONES */
 button {
   width:100%;
   margin-top:16px;
@@ -128,7 +119,6 @@ button {
 
 button.secondary { background:#e3dec6; }
 
-/* MAPAS */
 iframe {
   width:100%;
   height:190px;
@@ -137,7 +127,6 @@ iframe {
   margin-top:14px;
 }
 
-/* CONTADOR */
 .countdown-box {
   border:1px solid #d6cfbf;
   border-radius:22px;
@@ -160,7 +149,6 @@ iframe {
   opacity:0.65;
 }
 
-/* MENSAJE ESTADO */
 .estado {
   position:fixed;
   bottom:22px;
@@ -177,7 +165,6 @@ iframe {
 
 .estado.visible { opacity:1; }
 
-/* OCULTOS */
 #invitacion { display:none; }
 #error { color:#8b2e2e; margin-top:12px; }
 </style>
@@ -185,19 +172,15 @@ iframe {
 
 <body>
 
-<!-- CORAZONES -->
 <div class="hearts">
-  <span class="heart" style="top:8%; left:12%">♥</span>
-  <span class="heart" style="top:18%; left:78%">♥</span>
-  <span class="heart" style="top:32%; left:25%">♥</span>
-  <span class="heart" style="top:45%; left:70%">♥</span>
-  <span class="heart" style="top:58%; left:15%">♥</span>
-  <span class="heart" style="top:72%; left:60%">♥</span>
-  <span class="heart" style="top:86%; left:35%">♥</span>
-  <span class="heart" style="top:92%; left:80%">♥</span>
+  <span class="heart" style="top:10%; left:15%">♥</span>
+  <span class="heart" style="top:25%; left:75%">♥</span>
+  <span class="heart" style="top:40%; left:30%">♥</span>
+  <span class="heart" style="top:55%; left:80%">♥</span>
+  <span class="heart" style="top:70%; left:20%">♥</span>
+  <span class="heart" style="top:85%; left:60%">♥</span>
 </div>
 
-<!-- ACCESO -->
 <div class="wrapper" id="acceso">
   <h1>Invitación</h1>
   <p>Ingresá tu nombre para continuar</p>
@@ -206,7 +189,6 @@ iframe {
   <p id="error"></p>
 </div>
 
-<!-- INVITACIÓN -->
 <div class="wrapper" id="invitacion">
   <h1>Fabian & Maira</h1>
 
@@ -257,101 +239,45 @@ iframe {
 <script>
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbxPRlPxMZS9TaOpS5pEdScUjf8543hbirauFJRc2G_lEeRgK2Ru0OBQwflSBIdc6WNaZg/exec";
 
-/* ===== LISTA DE INVITADOS =====
-   Todo en minúsculas, sin acentos
-*/
-const INVITADOS = [
-  "Myriam cazarreta",
-  "Daiana chazarreta",
-  "Jimena chazarreta",
-  "Agustina chazarreta",
-  "Benjamin chazarreta",
-  "Agustin chazarreta",
-  "Marisa chazarreta",
-  "Daniel avila",
- "Esteban",
-  "Yesica",
-  "Leandro",
-  "Santiago",
-  "Jorge",
-  "Jesica",
-  "Milena",
-  "Sebastian",
-  "Erika",
-  "Ezequiel",
-  "Victoria",
-  "Juan Cruz",
-  "Luciana",
-  "Matias",
-  "Malena",
-  "Nazareno",
-  "Nora",
-  "Diego",
-  "Veronica",
-  "Valentina",
-  "Gonzalo",
-  "Julieta",
-  "Melisa",
-  "Edgardo",
-  "Claudia",
-  "Catalina",
-  "Noelia",
-  "Franco",
-  "Juana",
-  "Jorgelina",
-  "Constanza",
-  "Cristian",
-  "Pablo",
-  "Damaris",
-  "Zoe",
-  "Abel",
-  "Brisa",
-  "Giovanni",
-  "Cecilia",
-  "Carla",
-  "Tomas",
-  "Nehemias",
-  "Javier",
-  "Olivia",
-  "Micaela",
-  "Lourdes",
-  "Eluney",
-  "Ines",
-  "Lucio",
-  
-  
+const INVITADOS_RAW = [
+  "Myriam Cazarreta","Daiana Chazarreta","Jimena Chazarreta","Agustina Chazarreta",
+  "Benjamin Chazarreta","Agustin Chazarreta","Marisa Chazarreta","Daniel Avila",
+  "Esteban","Yesica","Leandro","Santiago","Jorge","Jesica","Milena","Sebastian",
+  "Erika","Ezequiel","Victoria","Juan Cruz","Luciana","Matias","Malena","Nazareno",
+  "Nora","Diego","Veronica","Valentina","Gonzalo","Julieta","Melisa","Edgardo",
+  "Claudia","Catalina","Noelia","Franco","Juana","Jorgelina","Constanza","Cristian",
+  "Pablo","Damaris","Zoe","Abel","Brisa","Giovanni","Cecilia","Carla","Tomas",
+  "Nehemias","Javier","Olivia","Micaela","Lourdes","Eluney","Ines","Lucio"
 ];
 
 let nombreActual = "";
 
 function normalizar(texto) {
-  return texto
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim();
+  return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
 }
-function capitalizarNombre(texto) {
-  return texto
-    .toLowerCase()
-    .split(" ")
-    .map(p => p.charAt(0).toUpperCase() + p.slice(1))
-    .join(" ");
-}
-function entrar() {
-nombreActual = capitalizarNombre(input);
 
-mensajePersonal.textContent =
-  `Hola ${nombreActual}, con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.`;
+const INVITADOS = INVITADOS_RAW.map(n => normalizar(n));
+
+function capitalizarNombre(texto) {
+  return texto.toLowerCase().split(" ").map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(" ");
+}
+
+function entrar() {
+  const input = nombreInput.value.trim();
+  const nombreNormalizado = normalizar(input);
+
+  if (!input) {
+    error.textContent = "Por favor ingresá tu nombre";
+    return;
+  }
 
   if (!INVITADOS.includes(nombreNormalizado)) {
     error.textContent = "Tu nombre no se encuentra en la lista de invitados";
     return;
   }
 
-  nombreActual = input.trim();
-  mensajePersonal.textContent =
-    `Hola ${nombreActual}, con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.`;
+  nombreActual = capitalizarNombre(input);
+  mensajePersonal.textContent = `Hola ${nombreActual}, con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.`;
 
   acceso.style.display = "none";
   invitacion.style.display = "block";
@@ -387,10 +313,3 @@ setInterval(() => {
 
 </body>
 </html>
-
-
-
-
-
-
-
