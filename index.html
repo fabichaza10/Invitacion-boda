@@ -282,32 +282,54 @@ iframe {
 
 <div id="mensajeEstado" class="estado"></div>
 
-<script>
+script>
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbxPRlPxMZS9TaOpS5pEdScUjf8543hbirauFJRc2G_lEeRgK2Ru0OBQwflSBIdc6WNaZg/exec";
 
+/* =======================
+   LISTA DE INVITADOS
+======================= */
 const INVITADOS_RAW = [
   "Myriam Chazarreta","Daiana Chazarreta","Jimena Chazarreta","Agustina Chazarreta",
   "Benjamin Chazarreta","Agustin Chazarreta","Marisa Chazarreta","Daniel chazarreta",
-  "Esteban chazarreta","Yesica chazarreta","Leandro chazarreta","Santiago tedesco","Jorge chazarreta","Jesica ortiz","Milena chazarreta","Sebastian chazarreta",
-  "Erika zarate","Ezequiel","Victoria","Juan Cruz moran","Luciana","Matias rodriguez","Malena abel","Nazareno balcaza","daniel girona",
-  "Nora goitea","Diego dalessandro","Veronica","Valentina dalessandro","Gonzalo dalessandro","Julieta","Melisa carrizo","Edgardo dalessandro",
-  "Claudia ramirez","Catalina dalessandro","Noelia dalessandro","Franco balcaza","Juana balcaza","Jorgelina dalessandro","Constanza balcaza","Cristian caseres",
-  "Pablo caseres","Damaris caseres","Zoe caseres","Abel dalessandro","Brisa","Giovanni","Cecilia andino","Carla zapata","Tomas ramirez",
-  "Nehemias ramirez","Javier andino","Olivia andino","Micaela andino","Lourdes diaz gerardi","Eluney manriquez","Ines","Lucio","diego figueroga","diego torres",
+  "Esteban chazarreta","Yesica chazarreta","Leandro chazarreta","Santiago tedesco",
+  "Jorge chazarreta","Jesica ortiz","Milena chazarreta","Sebastian chazarreta",
+  "Erika zarate","Ezequiel","Victoria","Juan Cruz moran","Luciana","Matias rodriguez",
+  "Malena abel","Nazareno balcaza","daniel girona","Nora goitea","Diego dalessandro",
+  "Veronica","Valentina dalessandro","Gonzalo dalessandro","Julieta","Melisa carrizo",
+  "Edgardo dalessandro","Claudia ramirez","Catalina dalessandro","Noelia dalessandro",
+  "Franco balcaza","Juana balcaza","Jorgelina dalessandro","Constanza balcaza",
+  "Cristian caseres","Pablo caseres","Damaris caseres","Zoe caseres","Abel dalessandro",
+  "Brisa","Giovanni","Cecilia andino","Carla zapata","Tomas ramirez","Nehemias ramirez",
+  "Javier andino","Olivia andino","Micaela andino","Lourdes diaz gerardi",
+  "Eluney manriquez","Ines","Lucio","diego figueroga","diego torres"
 ];
 
 let nombreActual = "";
 
+/* =======================
+   UTILIDADES
+======================= */
 function normalizar(texto) {
-  return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+  return texto
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
 }
 
 const INVITADOS = INVITADOS_RAW.map(n => normalizar(n));
 
 function capitalizarNombre(texto) {
-  return texto.toLowerCase().split(" ").map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(" ");
+  return texto
+    .toLowerCase()
+    .split(" ")
+    .map(p => p.charAt(0).toUpperCase() + p.slice(1))
+    .join(" ");
 }
 
+/* =======================
+   ACCESO
+======================= */
 function entrar() {
   const input = nombreInput.value.trim();
   const nombreNormalizado = normalizar(input);
@@ -323,12 +345,21 @@ function entrar() {
   }
 
   nombreActual = capitalizarNombre(input);
-  mensajePersonal.textContent = `Hola ${nombreActual}, con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.`;
+  mensajePersonal.textContent =
+    `Hola ${nombreActual}, con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.`;
 
   acceso.style.display = "none";
   invitacion.style.display = "block";
+
+  // Iniciar música al entrar (permitido por el navegador)
+  musica.volume = 0.25;
+  musica.play().catch(() => {});
+  botonMusica.classList.add("activo");
 }
 
+/* =======================
+   ENVÍO
+======================= */
 function enviar(asiste) {
   const datos = new FormData();
   datos.append("nombre", nombreActual);
@@ -347,6 +378,9 @@ function mostrarMensaje(texto) {
   setTimeout(() => box.classList.remove("visible"), 4000);
 }
 
+/* =======================
+   CUENTA REGRESIVA
+======================= */
 const fecha = new Date("2026-03-06T00:00:00");
 setInterval(() => {
   const diff = fecha - new Date();
@@ -355,54 +389,27 @@ setInterval(() => {
   m.textContent = Math.max(0, Math.floor(diff / 60000) % 60);
   s.textContent = Math.max(0, Math.floor(diff / 1000) % 60);
 }, 1000);
-<script>
+
+/* =======================
+   MÚSICA
+======================= */
 const musica = document.getElementById("musica");
-const boton = document.getElementById("botonMusica");
+const botonMusica = document.getElementById("botonMusica");
 
 function toggleMusica() {
   if (musica.paused) {
     musica.play();
-    boton.classList.add("activo");
-  } else {
-    musica.pause();
-    boton.classList.remove("activo");
-  }
-}
-
-
-musica.volume = 0.25;
-
-// Se activa cuando el usuario entra (por políticas del navegador)
-function iniciarMusica() {
-  musica.play().then(() => {
-    reproduciendo = true;
     botonMusica.classList.add("activo");
-  }).catch(() => {});
-}
-
-function toggleMusica() {
-  if (reproduciendo) {
-    musica.pause();
-    botonMusica.style.opacity = "0.3";
   } else {
-    musica.play();
-    botonMusica.style.opacity = "0.9";
+    musica.pause();
+    botonMusica.classList.remove("activo");
   }
-  reproduciendo = !reproduciendo;
 }
-
-
-// Iniciar música cuando el usuario entra a la invitación
-const originalEntrar = entrar;
-entrar = function() {
-  originalEntrar();
-  iniciarMusica();
-};
-
 </script>
 
 </body>
 </html>
+
 
 
 
