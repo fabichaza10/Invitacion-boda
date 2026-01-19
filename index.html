@@ -257,8 +257,95 @@ iframe {
     Con mucha alegría queremos invitarte a compartir uno de los días más importantes de nuestras vidas.
   </p>
 
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Civil</h2>
+    <p>06 de marzo de 2026 · 9:55</p>
+    <p>Delegación Registro Provincial de las Personas – Caseros</p>
+    <iframe src="https://www.google.com/maps?q=Registro%20Provincial%20de%20las%20Personas%20Caseros&output=embed"></iframe>
+  </div>
+
+  <div class="section">
+    <div class="countdown-box">
+      <div id="reloj">
+        <div><div class="numero" id="d"></div><div class="label">DIAS</div></div>
+        <div><div class="numero" id="h"></div><div class="label">HS</div></div>
+        <div><div class="numero" id="m"></div><div class="label">MIN</div></div>
+        <div><div class="numero" id="s"></div><div class="label">SEG</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Celebración</h2>
+    <p>06 de marzo de 2026 · 21:30</p>
+    <p>Quinta La Mabel</p>
+    <iframe src="https://www.google.com/maps?q=Quinta%20La%20Mabel&output=embed"></iframe>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>¿Qué canción no puede faltar?</h2>
+    <input id="cancion" placeholder="Canción o artista">
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <p>Confirmación de asistencia</p>
+    <button onclick="enviar(true)">Confirmo asistencia</button>
+    <button class="secondary" onclick="enviar(false)">No podré asistir</button>
+  </div>
+
 </div>
+
+<div id="mensajeEstado" class="estado"></div>
+
+<script>
+const ENDPOINT = "https://script.google.com/macros/s/AKfycby7ctV3h5L4SgwQ1T9y_TM-6RMzLPt_kMAhs0KMDbOlF0KwUR-YK-2vGd10VZiaON0yLQ/exec";
+let nombreActual = "";
+
+function entrar() {
+  const nombre = nombreInput.value.trim();
+  if (!nombre) {
+    error.textContent = "Por favor ingresá tu nombre";
+    return;
+  }
+  nombreActual = nombre;
+  mensajePersonal.textContent = `Hola ${nombre}, queremos invitarte a compartir este momento tan especial junto a nosotros.`;
+  acceso.style.display = "none";
+  invitacion.style.display = "block";
+}
+
+function enviar(asiste) {
+  const datos = new FormData();
+  datos.append("nombre", nombreActual);
+  datos.append("asistencia", asiste ? "Sí" : "No");
+  datos.append("cancion", document.getElementById("cancion").value);
+
+  fetch(ENDPOINT, { method: "POST", body: datos })
+    .then(() => mostrarMensaje("Tu respuesta fue guardada con éxito. Gracias por acompañarnos."))
+    .catch(() => mostrarMensaje("Ocurrió un error. Intentá nuevamente."));
+}
+
+function mostrarMensaje(texto) {
+  const box = document.getElementById("mensajeEstado");
+  box.textContent = texto;
+  box.classList.add("visible");
+  setTimeout(() => box.classList.remove("visible"), 4000);
+}
+
+const fecha = new Date("2026-03-06T00:00:00");
+setInterval(() => {
+  const diff = fecha - new Date();
+  d.textContent = Math.max(0, Math.floor(diff / 86400000));
+  h.textContent = Math.max(0, Math.floor(diff / 3600000) % 24);
+  m.textContent = Math.max(0, Math.floor(diff / 60000) % 60);
+  s.textContent = Math.max(0, Math.floor(diff / 1000) % 60);
+}, 1000);
+</script>
 
 </body>
 </html>
-
